@@ -5,7 +5,6 @@ public class UserFactory
 	static Scanner scan=new Scanner(System.in);
 	public static User createNewUser(String usertype)
 	{
-		System.out.println("xddd");
 		User newUser=null;
 		if(usertype=="Admin")
 		{
@@ -40,6 +39,10 @@ public class UserFactory
 		else
 		{
 			System.out.println("User is couldn't created");
+		}
+		if(newUser!=null)
+		{
+			User.addNewUserToList(newUser);
 		}
 		return newUser;
 	}

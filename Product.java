@@ -6,10 +6,10 @@ public class Product
 	private String productImage;
 	//price of product
 	private double productPrice;
-	public Product(String productName, String productImage, double productPrice) 
+	public Product(String productName, /*String productImage,*/ double productPrice) 
 	{
 		this.productName = productName;
-		this.productImage = productImage;
+		//this.productImage = productImage;
 		this.productPrice = productPrice;
 	}
 	public String getProductName() 

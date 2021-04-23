@@ -4,30 +4,57 @@ import java.util.ArrayList;
 public class Restaurant 
 {
 	//restaurant's name
-	protected String restaurantName;
+	private String restaurantName;
 	//restaurant's logo
-	protected String imageLink;
+	private String imageLink;
 	//restaurant's all products 
-	protected ArrayList<Product> allProducts;
-	private ArrayList<Restaurant> allRestaurants;
+	private ArrayList<Product> allProducts=null;
+	private static ArrayList<Restaurant> allRestaurants;
 	
+	//for not default restaurants empty constructor 
 	public Restaurant()
 	{
 		//buraya restaurant name ve image link eklenecek tabi
+		if(allRestaurants==null)
+		{
+			allRestaurants=new ArrayList<Restaurant>();
+		}
 		allRestaurants.add(this);
 	}
-	//User bununla birlikte tüm restoranlarý listeler
-	public ArrayList<Restaurant> getAllRestaurants()
+	//for default restaurants
+	public Restaurant(String restaurantName,ArrayList<Product> allProducts)
 	{
-		return this.allRestaurants;
+		this.restaurantName=restaurantName;
+		this.allProducts=allProducts;
+	}
+	public String getRestaurantName() {
+		return restaurantName;
+	}
+	public void setRestaurantName(String restaurantName) {
+		this.restaurantName = restaurantName;
+	}
+	public String getImageLink() {
+		return imageLink;
+	}
+	public void setImageLink(String imageLink) {
+		this.imageLink = imageLink;
+	}
+	//User bununla birlikte tüm restoranlarý listeler
+	public static ArrayList<Restaurant> getAllRestaurants()
+	{
+		return allRestaurants;
 	}
 	//Owner bunu çaðýrarak kendi restoranýný görüntüler.(elde eder).
-	public Restaurant giveMyRestaurant()
+	/*public Restaurant giveMyRestaurant()
 	{
 		return this;
-	}
+	}*/
 	public void addNewProduct(Product product)
 	{
+		if(allProducts==null)
+		{
+			allProducts=new ArrayList<Product>();
+		}
 		allProducts.add(product);
 		//we need to display products after adding or removing products
 	}

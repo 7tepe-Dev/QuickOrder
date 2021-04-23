@@ -1,10 +1,10 @@
-public class customer extends user 
+public class Customer extends User 
 {
 	private String location;
 	private double balance;
 	
-	public customer(String userName,String password,userType usertype
-			,double balance)
+	public Customer(String userName,String password,
+			userType usertype,double balance)
 	{
 		this.userName=userName;
 		this.password=password;

@@ -38,15 +38,11 @@ public class Read_Data {
 			//System.out.println("Product Price: "+product.get(1));
 			
 			for (Object object : users) {
+				
 				JSONObject user = (JSONObject) object;
-				if (user.get("userType").equals("owner")) 
-				{
-					System.out.println("True");
-				} 
-				else 
-				{
-					System.out.println("False");	
-				}
+
+				System.out.println("User Name and User Type:"+user.get("userName")+" "+user.get("userType"));
+
 			}
 
 			

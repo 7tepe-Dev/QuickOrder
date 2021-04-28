@@ -1,3 +1,5 @@
+package DataBase;
+
 public class Product 
 {
 	//name of product

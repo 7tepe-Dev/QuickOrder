@@ -1,5 +1,3 @@
-package BackEnd;
-
 import java.util.Scanner;
 
 public class UserFactory 
@@ -8,11 +6,11 @@ public class UserFactory
 	public static User createNewUser(String usertype)
 	{
 		User newUser=null;
-		if(usertype=="Admin")
+		if(usertype.equals("Admin"))
 		{
 			newUser=(Admin) Admin.createOrGetAdmin();
 		}
-		else if(usertype=="Customer")
+		else if(usertype.equals("Customer"))
 		{
 			System.out.println("Enter your username:");
 			String username=scan.next();
@@ -22,9 +20,9 @@ public class UserFactory
 			scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 			System.out.println("Enter the balance:");
 			double balance=scan.nextDouble();
-			newUser=(Customer) new Customer(username,password,userType.CUSTOMER,balance);
+			newUser=new Customer(username,password,userType.CUSTOMER,balance);
 		}
-		else if(usertype=="Owner")
+		else if(usertype.equals("Owner"))
 		{
 			System.out.println("Enter your username:");
 			String username=scan.next();
@@ -34,18 +32,16 @@ public class UserFactory
 			scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 			System.out.println("Enter the balance:");
 			double balance=scan.nextDouble();
-			Restaurant restaurant=new Restaurant();
-			newUser=new Owner(username,password,userType.OWNER,restaurant,balance);
-			//((Owner)newUser).getRestaurant().getAllProducts();
+			newUser=new Owner(username,password,userType.OWNER,balance);
 		}
 		else
 		{
 			System.out.println("User is couldn't created");
 		}
-		if(newUser!=null)
+		/*if(newUser!=null)
 		{
 			User.addNewUserToList(newUser);
-		}
+		}*/
 		return newUser;
 	}
 }

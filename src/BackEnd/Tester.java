@@ -57,8 +57,6 @@ public class Tester
 		System.out.println("Do you want to log in or sign up."
 				+ "(Enter login or signup)");
 		String choice=scan.nextLine();
-		
-
 		while(!(choice.equalsIgnoreCase("login") || choice.equalsIgnoreCase("signup")))
 		{
 			System.out.println("Please enter login or signup.Nothing else!");

@@ -1,5 +1,3 @@
-package BackEnd;
-
 public class Admin extends User
 {
 	static Admin admin;

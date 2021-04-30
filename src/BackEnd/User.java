@@ -1,5 +1,3 @@
-package BackEnd;
-
 import java.util.ArrayList;
 
 enum userType{ADMIN,OWNER,CUSTOMER};

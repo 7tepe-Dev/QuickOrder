@@ -1,11 +1,9 @@
-package BackEnd;
-
 import java.util.Scanner;
 
 public class Tester 
 {
-
 	public static User currentUser;
+	public static Scanner scan=new Scanner(System.in);
 	public static boolean LogIn(String userName,String password)
 	{
 		for(User user:User.getAllUsers())
@@ -13,18 +11,20 @@ public class Tester
 			if(user.userName.equals(userName) && user.password.equals(password))
 			{
 				currentUser=user;
-				return false;
+				return true;
 			}
 		}
-		return true;
+		System.out.println("Username or password is wrong.");
+		System.out.println("Please try again.");
+		return false;
 	}
 	public static void main(String[] args) 
 	{
 		//For creating default users
 		Admin admin=Admin.createOrGetAdmin();
-		Customer c1=new Customer("hakanGultekin","hakan2582",userType.CUSTOMER,250);
-		Customer c2=new Customer("kaganOzetci","35kagan26",userType.CUSTOMER,1200);
-		Customer c3=new Customer("mertSancar","1212mert",userType.CUSTOMER,670);
+		Customer c1=new Customer("hakanGultekin","hakan2582",userType.CUSTOMER,250,"karatay/konya");
+		Customer c2=new Customer("kaganOzetci","35kagan26",userType.CUSTOMER,1200,"ataþehir/istanbul");
+		Customer c3=new Customer("mertSancar","1212mert",userType.CUSTOMER,670,"kýzýlay/ankara");
 		Restaurant r1=new Restaurant();
 		r1.setRestaurantName("Kardesler Steak");
 		r1.addNewProduct(new Product("Steak",120));
@@ -52,21 +52,74 @@ public class Tester
 		User.addNewUserToList(kardesler);
 		User.addNewUserToList(mcDonalds);
 		User.addNewUserToList(homeCooking);
-		//program starts here
+		//If client wants to add new customer or owner
 		System.out.println("Welcome to the Restaurant Project.");
-		System.out.println("Please enter your username and password");
-		Scanner scan=new Scanner(System.in);
-		boolean check=true;
-		while(check)
+		System.out.println("Do you want to log in or sign up."
+				+ "(Enter login or signup)");
+		String choice=scan.nextLine();
+		
+
+		while(!(choice.equalsIgnoreCase("login") || choice.equalsIgnoreCase("signup")))
 		{
-			System.out.println("Username:");
-			String userName=scan.next();
+			System.out.println("Please enter login or signup.Nothing else!");
 			scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-			System.out.println("Password:");
-			String password=scan.next();
-			scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-			check=LogIn(userName,password);
+			choice=scan.nextLine();
+			//scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 		}
+		if(choice.equalsIgnoreCase("login"))//giriþ yap
+		{
+			System.out.println("You will login to an already exist account");
+			System.out.println("Please enter your username and password");
+			boolean check=false;
+			while(!check)
+			{
+				System.out.println("Username:");
+				scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+				String userName=scan.nextLine();
+				//we need to check user name if there is white space
+				System.out.println("Password:");
+				scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+				String password=scan.nextLine();
+				//we need to check password as well if there is white space
+				check=LogIn(userName,password);
+			}
+			AfterLogin();
+		}
+		else if(choice.equalsIgnoreCase("signup"))//kaydol
+		{
+			System.out.println("Enter user type:");
+			System.out.println("Owner/Customer");
+			scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+			String type=scan.nextLine();
+			while(!(type.equals("Owner")||type.equals("Customer")))
+			{
+				System.out.println("You entered:"+type);
+				System.out.println("But we wanted:"+" Owner"+" Customer");
+				System.out.println("Please enter again:");
+				scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+				type=scan.nextLine();
+			}
+			User newUser=UserFactory.createNewUser(type);
+			if(newUser!=null)
+			{
+				User.addNewUserToList(newUser);
+				System.out.println("Account created successfully");
+			}
+			boolean check=LogIn(newUser.userName,newUser.password);
+			if(check)
+			{
+				AfterLogin();
+			}
+		}
+		else
+		{
+			System.out.println("a problem has occurred");
+		}
+		scan.close();
+	}
+	private static void AfterLogin() 
+	{
+		System.out.println("Hello "+currentUser.userName);
 		if(currentUser.usertype==userType.ADMIN )
 		{
 			//show everything;
@@ -80,11 +133,12 @@ public class Tester
 			{
 				System.out.println(r.getRestaurantName());
 			}
-			
 		}
 		else if(currentUser.usertype==userType.CUSTOMER)
 		{
+			Customer currentCustomer=((Customer)currentUser);
 			//show all restaurants
+			System.out.println("Mr."+currentCustomer.userName+"'s balance:"+currentCustomer.getBalance());
 			System.out.println("All restaurants listed below:");
 			for(Restaurant r:Restaurant.getAllRestaurants())
 			{
@@ -94,61 +148,57 @@ public class Tester
 		else if(currentUser.usertype==userType.OWNER)
 		{
 			//show only its restaurant
-			System.out.println("Your restaurant:");
-			Restaurant r=((Owner)currentUser).getRestaurant();
-			System.out.println(r.getRestaurantName());
-		}
-		else
-		{
-			System.out.println("Something went wrong.");
-		}
-		/*User xd=UserFactory.createNewUser("Owner");
-		if(xd.usertype==userType.OWNER)
-		{
-			((Owner)xd).getRestaurant().addNewProduct(new Product("suþi",152));
-			((Owner)xd).getRestaurant().addNewProduct(new Product("japaneseThýng",338));
-		}
-		ArrayList<User> users=new ArrayList<User>();
-		users.add(a);
-		users.add(c);
-		users.add(d);
-		users.add(de);
-		users.add(xd);
-		a.addNewUserToList();
-		c.addNewUserToList();
-		try
-		{
-			User d=UserFactory.createNewUser("Owner");
-			((Owner) d).getRestaurant();
-			d.addNewUserToList();
-		}
-		catch(NullPointerException e)
-		{
-			System.out.println("boþ atmýþsýn abem napiyim.");
-		}
-		for(User user :User.getAllUsers())
-		{
-			if(user.usertype==userType.OWNER)
+			Owner currentOwner=((Owner)currentUser);
+			if(currentOwner.getRestaurant()==null)
 			{
-				Owner owner=(Owner)user;
-				System.out.println("Restoran ismi:"+owner.getRestaurant().getRestaurantName());
-				//Adding products to restaurant
-				for(Product p:owner.getRestaurant().getAllProducts())
+				System.out.println("You need to define your restaurant.");
+				Restaurant temp=new Restaurant();
+				System.out.println("Enter your restaurant's name:");
+				scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+				String rname=scan.nextLine();
+				
+				temp.setRestaurantName(rname);
+				currentOwner.setRestaurant(temp);
+			}
+			System.out.println("Your restaurant:");
+			Restaurant r=currentOwner.getRestaurant();
+			System.out.println(r.getRestaurantName());
+			System.out.println("And your restaurant's all products:");
+			if(r.getAllProducts()==null)
+			{
+				System.out.println("You have no product.");
+				System.out.println("If you want to display it.");
+				System.out.println("First you should add it");
+				System.out.println("Do you want to add product?(yes/no)");
+				scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+				String p_answer=scan.next();
+				while(p_answer.equals("yes"))
 				{
-					System.out.println("Product name:"+p.getProductName());
+					System.out.println("Please enter your product's name:");
+					scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+					String pro_name=scan.nextLine();
+					System.out.println("Please enter your product's price:");
+					scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+					double pro_price=scan.nextDouble();
+					Product product=new Product(pro_name,pro_price);
+					r.addNewProduct(product);
+					System.out.println("Do you want to add another one?(yes/no)");
+					scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+					p_answer=scan.next();
+				}
+				System.out.println("Products added.");
+			}
+			if(r.getAllProducts()!=null)
+			{
+				for(Product product:r.getAllProducts())
+				{
+					if(product!=null)
+					{
+						System.out.println("name:"+product.getProductName()
+						+" price:"+product.getProductPrice());
+					}
 				}
 			}
-			else if(user.usertype==userType.CUSTOMER)
-			{
-				System.out.println("hey customer.your name is:"+((Customer)user).userName);
-			}
-			if(user.usertype==userType.OWNER)
-			{
-				Owner owner=(Owner)user;
-				System.out.println(owner.getRestaurant().getRestaurantName());
-			}
-			
-		}*/
-		scan.close();
+		}
 	}
 }

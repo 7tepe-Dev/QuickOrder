@@ -51,9 +51,7 @@ public class DataHandler
 			//listeye owner ýn eklenmesi
 		}
 		return false;//öylesine
-		
 	}
-	
 	public static boolean WriteDataToJSON(User user)
 	{
 		if(user.usertype.equals(userType.CUSTOMER))
@@ -72,5 +70,4 @@ public class DataHandler
 		}
 		return false;//þimdilik öylesine yazdým
 	}
-
 }

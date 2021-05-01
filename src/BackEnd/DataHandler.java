@@ -7,7 +7,7 @@ import org.json.simple.JSONArray;
 public class DataHandler 
 {
 
-	public static Write_Data wd = new Write_Data();
+	public static WriteData wd = new WriteData();
 	public JSONArray user_list = new JSONArray();
 	
 	public static boolean ReadDatasFromJSON()

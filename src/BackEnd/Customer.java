@@ -1,3 +1,5 @@
+package BackEnd;
+
 public class Customer extends User 
 {
 	private String location;

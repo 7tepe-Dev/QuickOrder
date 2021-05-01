@@ -1,3 +1,5 @@
+package BackEnd;
+
 import java.util.Scanner;
 
 public class Tester 
@@ -18,6 +20,7 @@ public class Tester
 		System.out.println("Please try again.");
 		return false;
 	}
+	public static Customer c1=new Customer("hakanGultekin","hakan2582",userType.CUSTOMER,250,"karatay/konya");
 	public static void main(String[] args) 
 	{
 		//For creating default users
@@ -26,6 +29,7 @@ public class Tester
 		Customer c2=new Customer("kaganOzetci","35kagan26",userType.CUSTOMER,1200,"ataþehir/istanbul");
 		Customer c3=new Customer("mertSancar","1212mert",userType.CUSTOMER,670,"kýzýlay/ankara");
 		Restaurant r1=new Restaurant();
+
 		r1.setRestaurantName("Kardesler Steak");
 		r1.addNewProduct(new Product("Steak",120));
 		r1.addNewProduct(new Product("Salad",24));

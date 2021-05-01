@@ -1,3 +1,5 @@
+package BackEnd;
+
 public class Product 
 {
 	//name of product

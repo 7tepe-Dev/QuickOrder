@@ -1,3 +1,5 @@
+package BackEnd;
+
 public class Owner extends User 
 {
 	private Restaurant restaurant;

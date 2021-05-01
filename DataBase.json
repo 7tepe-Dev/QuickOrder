@@ -1,1 +1,1 @@
-[{"password":"321321","balance":50,"userType":"customer","userName":"kagan"},{"password":"341526","balance":30,"userType":"customer","userName":"emirhan"},{"password":"123123","restaurant":{"balance":200,"name":"MCDonald's","products":[["McChicken",15.0],["McRoyal",20.0]]},"userType":"owner","userName":"mert"}]
+[{"password":"1234","balance":50,"userType":"customer","userName":"hakanGultekin"},{"password":"341526","balance":30,"userType":"customer","userName":"emirhan"},{"password":"123123","restaurant":{},"userType":"owner","userName":"mert"}]

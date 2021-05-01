@@ -22,7 +22,19 @@ public class DataHandler
 		//ve burada user oluþturulmasý lazým ki bunu listeye ekleyebilelim
 		//User current= dosyadan alýnan verilerle yeni user oluþturulmasý
 		User current=null;//=new User(get json username,get json password,get json usertype);
-		if(current.usertype.equals(userType.CUSTOMER))
+		userType currentType;
+		String usertypes="";//mesela usertype için çektiðimiz string usertypes olsun
+		if(usertypes.equals("Owner"))
+		{
+			currentType=userType.OWNER;
+		}
+		else if(usertypes.equals("Customer"))
+		{
+			currentType=userType.CUSTOMER;
+		}
+		//TAM BURADA USER NEW USER DENEREK OLUÞTURULMALI
+		//User a=new User(); üstte ayarladýðýmýz currentType kullanýlarak
+		if(current.usertype.equals(userType.ADMIN))
 		{
 			Admin admin=Admin.createOrGetAdmin();
 			User.addNewUserToList(admin);

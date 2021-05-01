@@ -44,7 +44,7 @@ public class Read_Data {
 				
 				JSONObject user = (JSONObject) object;
 
-				System.out.println("User Name and User Type:"+user.get("userName")+" "+user.get("password"));
+				System.out.println("User Name:"+user.get("userName")+" User Type:"+user.get("userType"));
 				
 				
 				

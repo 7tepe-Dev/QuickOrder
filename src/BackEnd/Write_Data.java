@@ -1,101 +1,33 @@
 package BackEnd;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.FileReader;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
-
-
+import org.json.simple.parser.JSONParser;
 
 public class Write_Data {
 
 	
-	@SuppressWarnings("unchecked")
+
 	public static void main(String[] args) {
 		
 		
+		DataHandler test = new DataHandler();
+			
+		test.write_customer_data("mert", "3213", 150);
+		test.write_customer_data("merve", "3243", 350);
+		test.write_customer_data("kaðan", "3213", 650);
 		
-		JSONObject owner;
-		JSONObject customer;			
-		JSONObject restaurant;
+		test.write_owner_data("yusuf", "4212");
+		test.write_owner_data("emirhan", "4212");
+		test.write_owner_data("berk", "4212");
 		
-
-		JSONArray products = new JSONArray();
-		JSONArray product = new JSONArray();
-		JSONArray user_list = new JSONArray();
-
-		
-
-		//customer
-			//customer oluþturma
-		customer = new JSONObject();
-		customer.put("userName", Tester.c1.getUserName());
-		customer.put("password", "1234");
-		customer.put("userType", "customer");
-		customer.put("balance", 50);	
-		user_list.add(customer);
-
-			//customer oluþturma
-		customer = new JSONObject();	
-		customer.put("userName", "emirhan");
-		customer.put("password", "341526");
-		customer.put("userType", "customer");
-		customer.put("balance", 30);	
-		user_list.add(customer);
-		
-
-		
-		//owner
-		owner = new JSONObject();
-		owner.put("userName", "mert");
-		owner.put("password", "123123");
-		owner.put("userType", "owner");
-		user_list.add(owner);
-		
-			//restaurant oluþturma
-		restaurant = new JSONObject(); 
-		owner.put("restaurant", restaurant); // restaurant.isEmpty()
-		//restaurant.put("name", "MCDonald's");
-		//restaurant.put("balance", 200);
+		test.write_restaurant_to_owner(1003, "yusufkebap", 500);
 		
 		
-
+		//test.write_restaurant_to_owner(868, "yusufkebap", 200);
 		
-			//ürün oluþturma
-		//product = new JSONArray();
-		//product.add(product1.getProductName());
-		//product.add(product1.getProductPrice());
-		//products.add(product);
-			//ürün oluþturma
-		//product = new JSONArray();
-		//product.add(product2.getProductName());
-		//product.add(product2.getProductPrice());
-		//products.add(product);
-		
-			//ürünleri restauranta ekleme
-		//restaurant.put("products", products);
-		
-		
-		
-		
-
-		
-		System.out.println(user_list);
-
-		
-		
-		//json dosyasýný oluþturma ve yazma
-		try(FileWriter file = new FileWriter("DataBase.json"))
-		{
-			file.write(user_list.toString());
-			file.flush();
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}
 
 		
 		

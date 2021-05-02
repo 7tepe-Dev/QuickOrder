@@ -15,10 +15,7 @@ import org.json.simple.parser.ParseException;
 public class ReadData 
 {
 	 JSONParser parser = new JSONParser();
-
-		
-
-	public void readAllUserfromDB()
+	 public void readAllUserfromDB()
 	{
 		try 
 		{

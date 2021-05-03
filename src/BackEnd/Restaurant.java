@@ -1,22 +1,20 @@
-package BackEnd;
-
 import java.util.ArrayList;
-
-
 public class Restaurant 
 {
 	//restaurant's name
 	private String restaurantName;
 	//restaurant's logo
 	private String imageLink;
-	//restaurant's all products 
+	//restaurant's all products
+	private String restaurantLocation;
 	private ArrayList<Product> allProducts=null;
 	private static ArrayList<Restaurant> allRestaurants;
 	
 	//for not default restaurants empty constructor 
-	public Restaurant()
+	public Restaurant(String restaurantName)
 	{
 		//buraya restaurant name ve image link eklenecek tabi
+		this.restaurantName=restaurantName;		
 		if(allRestaurants==null)
 		{
 			allRestaurants=new ArrayList<Restaurant>();
@@ -24,16 +22,24 @@ public class Restaurant
 		allRestaurants.add(this);
 	}
 	//for default restaurants
-	public Restaurant(String restaurantName,ArrayList<Product> allProducts)
+	public Restaurant(String restaurantName,ArrayList<Product> allProducts,String restaurantLocation)
 	{
 		this.restaurantName=restaurantName;
+		this.restaurantLocation=restaurantLocation;
 		this.allProducts=allProducts;
+		
 	}
 	public String getRestaurantName() {
 		return restaurantName;
 	}
 	public void setRestaurantName(String restaurantName) {
 		this.restaurantName = restaurantName;
+	}
+	public String getRestaurantLocation() {
+		return this.restaurantLocation;
+	}
+	public void setRestaurantLocation(String restaurantLocation) {
+		this.restaurantLocation = restaurantLocation;
 	}
 	public String getImageLink() {
 		return imageLink;

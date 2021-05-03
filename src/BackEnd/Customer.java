@@ -1,17 +1,14 @@
-package BackEnd;
-
 public class Customer extends User 
 {
 	private String location;
 	private double balance;
 	//Constructor for new added Customers
 	public Customer(String userName,String password,
-			userType usertype,double balance)
+			userType usertype)
 	{
 		this.userName=userName;
 		this.password=password;
 		this.usertype=usertype;
-		this.balance=balance;
 	}
 	//Constructor for default Customers
 	public Customer(String userName,String password,
@@ -22,6 +19,15 @@ public class Customer extends User
 		this.usertype=usertype;
 		this.balance=balance;
 		this.location=location;
+	}
+	//temporary constructor
+	public Customer(String userName,String password,
+			userType usertype,double balance)
+	{
+		this.userName=userName;
+		this.password=password;
+		this.usertype=usertype;
+		this.balance=balance;
 	}
 	public String getLocation() 
 	{

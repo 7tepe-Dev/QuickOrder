@@ -1,5 +1,3 @@
-package BackEnd;
-
 import java.util.Scanner;
 
 public class Tester 
@@ -20,8 +18,7 @@ public class Tester
 		System.out.println("Please try again.");
 		return false;
 	}
-	public static Customer c1=new Customer("hakanGultekin","hakan2582",userType.CUSTOMER,250,"karatay/konya");
-	public static void main(String[] args) 
+	/*public static void main(String[] args) 
 	{
 		//For creating default users
 		Admin admin=Admin.createOrGetAdmin();
@@ -29,7 +26,6 @@ public class Tester
 		Customer c2=new Customer("kaganOzetci","35kagan26",userType.CUSTOMER,1200,"ataþehir/istanbul");
 		Customer c3=new Customer("mertSancar","1212mert",userType.CUSTOMER,670,"kýzýlay/ankara");
 		Restaurant r1=new Restaurant();
-
 		r1.setRestaurantName("Kardesler Steak");
 		r1.addNewProduct(new Product("Steak",120));
 		r1.addNewProduct(new Product("Salad",24));
@@ -83,6 +79,7 @@ public class Tester
 				scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 				String password=scan.nextLine();
 				//we need to check password as well if there is white space
+				//for now we dont check for white spaces
 				check=LogIn(userName,password);
 			}
 			AfterLogin();
@@ -118,7 +115,7 @@ public class Tester
 			System.out.println("a problem has occurred");
 		}
 		scan.close();
-	}
+	}*/
 	private static void AfterLogin() 
 	{
 		System.out.println("Hello "+currentUser.userName);
@@ -154,13 +151,13 @@ public class Tester
 			if(currentOwner.getRestaurant()==null)
 			{
 				System.out.println("You need to define your restaurant.");
-				Restaurant temp=new Restaurant();
+				//Restaurant temp=new Restaurant();
 				System.out.println("Enter your restaurant's name:");
 				scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 				String rname=scan.nextLine();
 				
-				temp.setRestaurantName(rname);
-				currentOwner.setRestaurant(temp);
+				//temp.setRestaurantName(rname);
+				//currentOwner.setRestaurant(temp);
 			}
 			System.out.println("Your restaurant:");
 			Restaurant r=currentOwner.getRestaurant();

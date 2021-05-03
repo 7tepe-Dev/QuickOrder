@@ -1,5 +1,3 @@
-package BackEnd;
-
 public class Admin extends User
 {
 	static Admin admin;
@@ -13,7 +11,6 @@ public class Admin extends User
 	{
 		if(admin==null)
 		{
-			System.out.println("i am created");
 			admin=new Admin();
 		}
 		return admin;

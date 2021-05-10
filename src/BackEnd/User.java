@@ -4,10 +4,16 @@ enum userType{ADMIN,OWNER,CUSTOMER};
 
 public abstract class User 
 {
-	protected String userName;
-	protected String password;
-	protected userType usertype;
+	private String userName;
+	private String password;
+	private userType usertype;
 	private static ArrayList<User> allUsers=new ArrayList<User>();
+	protected User(String userName,String password,userType usertype)
+	{
+		this.userName=userName;
+		this.password=password;
+		this.usertype=usertype;
+	}
 	public String getUserName() 
 	{
 		return userName;

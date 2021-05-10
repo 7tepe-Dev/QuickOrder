@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileReader;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -10,7 +11,9 @@ public class ReadData
 	 {
 		try 
 		{
-			Object obj = parser.parse(new FileReader("RestaurantDatabase.json"));
+			File dataBaseFile=new File("RestaurantDatabase.json");
+			FileReader fileReader=new FileReader(dataBaseFile);
+			Object obj = parser.parse(fileReader);
 			JSONArray users = (JSONArray) obj;
 			for (Object object : users) 
 			{
@@ -68,7 +71,9 @@ public class ReadData
 		}
 		catch (Exception e) 
 		{
-			e.printStackTrace();
+			System.out.println("An error has occured at reading files.");
+			System.out.println("Returning to the defaults!!!");
+			WriteDefaults.WriteDefaultUsers();
 		}
 	}
 }

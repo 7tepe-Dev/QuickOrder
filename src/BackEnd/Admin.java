@@ -3,9 +3,10 @@ public class Admin extends User
 	static Admin admin;
 	private Admin()
 	{
-		this.userName="admin";
+		super("admin","admin1234",userType.ADMIN);
+		/*this.userName="admin";
 		this.password="admin1234";
-		this.usertype=userType.ADMIN;
+		this.usertype=userType.ADMIN;*/
 	}
 	public static Admin createOrGetAdmin()
 	{

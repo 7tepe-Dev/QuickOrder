@@ -8,7 +8,7 @@ public class Tester
 	{
 		for(User user:User.getAllUsers())
 		{
-			if(user.userName.equals(userName) && user.password.equals(password))
+			if(user.getUserName().equals(userName) && user.getPassword().equals(password))
 			{
 				currentUser=user;
 				return true;
@@ -118,14 +118,14 @@ public class Tester
 	}*/
 	private static void AfterLogin() 
 	{
-		System.out.println("Hello "+currentUser.userName);
-		if(currentUser.usertype==userType.ADMIN )
+		System.out.println("Hello "+currentUser.getUserName());
+		if(currentUser.getUsertype()==userType.ADMIN )
 		{
 			//show everything;
 			System.out.println("All users:");
 			for(User user:User.getAllUsers())
 			{
-				System.out.println(user.userName);
+				System.out.println(user.getUserName());
 			}
 			System.out.println("All restaurants:");
 			for(Restaurant r:Restaurant.getAllRestaurants())
@@ -133,18 +133,18 @@ public class Tester
 				System.out.println(r.getRestaurantName());
 			}
 		}
-		else if(currentUser.usertype==userType.CUSTOMER)
+		else if(currentUser.getUsertype()==userType.CUSTOMER)
 		{
 			Customer currentCustomer=((Customer)currentUser);
 			//show all restaurants
-			System.out.println("Mr."+currentCustomer.userName+"'s balance:"+currentCustomer.getBalance());
+			System.out.println("Mr."+currentCustomer.getUserName()+"'s balance:"+currentCustomer.getBalance());
 			System.out.println("All restaurants listed below:");
 			for(Restaurant r:Restaurant.getAllRestaurants())
 			{
 				System.out.println(r.getRestaurantName());
 			}
 		}
-		else if(currentUser.usertype==userType.OWNER)
+		else if(currentUser.getUsertype()==userType.OWNER)
 		{
 			//show only its restaurant
 			Owner currentOwner=((Owner)currentUser);

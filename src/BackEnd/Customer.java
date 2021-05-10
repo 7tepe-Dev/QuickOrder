@@ -6,28 +6,34 @@ public class Customer extends User
 	public Customer(String userName,String password,
 			userType usertype)
 	{
-		this.userName=userName;
+		super(userName, password, usertype);
+		/*this.userName=userName;
 		this.password=password;
-		this.usertype=usertype;
+		this.usertype=usertype;*/
 	}
 	//Constructor for default Customers
 	public Customer(String userName,String password,
 			userType usertype,double balance,String location)
 	{
-		this.userName=userName;
+		super(userName, password, usertype);
+		this.balance=balance;
+		this.location=location;
+		/*this.userName=userName;
 		this.password=password;
 		this.usertype=usertype;
 		this.balance=balance;
-		this.location=location;
+		this.location=location;*/
 	}
 	//temporary constructor
 	public Customer(String userName,String password,
 			userType usertype,double balance)
 	{
-		this.userName=userName;
+		super(userName, password, usertype);
+		this.balance=balance;
+		/*this.userName=userName;
 		this.password=password;
 		this.usertype=usertype;
-		this.balance=balance;
+		this.balance=balance;*/
 	}
 	public String getLocation() 
 	{

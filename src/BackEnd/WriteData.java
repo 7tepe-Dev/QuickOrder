@@ -15,32 +15,32 @@ public class WriteData
 	@SuppressWarnings("unchecked")
 	public void WriteTheUserToDB(User user)
 	{
-		if(user.usertype.equals(userType.ADMIN))
+		if(user.getUsertype().equals(userType.ADMIN))
 		{
 			admin=new JSONObject();
 			Admin currentAdmin=((Admin)user);
-			admin.put("username",currentAdmin.userName);
-			admin.put("password",currentAdmin.password);
+			admin.put("username",currentAdmin.getUserName());
+			admin.put("password",currentAdmin.getPassword());
 			admin.put("usertype","Admin");
 			userList.add(admin);
 		}
-		else if(user.usertype.equals(userType.CUSTOMER))
+		else if(user.getUsertype().equals(userType.CUSTOMER))
 		{
 			customer=new JSONObject();
 			Customer currentCustomer=((Customer)user);
-			customer.put("username",currentCustomer.userName);
-			customer.put("password",currentCustomer.password);
+			customer.put("username",currentCustomer.getUserName());
+			customer.put("password",currentCustomer.getPassword());
 			customer.put("usertype","Customer");
 			customer.put("balance",currentCustomer.getBalance());
 			customer.put("location",currentCustomer.getLocation());
 			userList.add(customer);
 		}
-		else if(user.usertype.equals(userType.OWNER))
+		else if(user.getUsertype().equals(userType.OWNER))
 		{
 			owner=new JSONObject();
 			Owner currentOwner=((Owner)user);
-			owner.put("username",currentOwner.userName);
-			owner.put("password",currentOwner.password);
+			owner.put("username",currentOwner.getUserName());
+			owner.put("password",currentOwner.getPassword());
 			owner.put("usertype","Owner");
 			owner.put("balance",currentOwner.getBalance());
 			restaurant=new JSONObject();
@@ -57,7 +57,6 @@ public class WriteData
 				currentObject.put("price",p.getProductPrice());
 				allProducts.add(currentObject);
 			}
-			
 			userList.add(owner);
 		}
 		else
@@ -68,7 +67,6 @@ public class WriteData
 		{
 			file.write(userList.toString());
 			file.flush();
-			System.out.println("Customer's data saved");
 		}
 		catch(IOException e)
 		{

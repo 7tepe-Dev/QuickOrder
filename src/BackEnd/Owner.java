@@ -5,17 +5,19 @@ public class Owner extends User
 	//Constructor for added new Owners
 	public Owner(String userName,String password,userType usertype)
 	{
-		this.userName=userName;
+		super(userName, password, usertype);
+		/*this.userName=userName;
 		this.password=password;
-		this.usertype=usertype;
+		this.usertype=usertype;*/
 	}
 	//Constructor for default
 	public Owner(String userName,String password,userType usertype,
 			Restaurant restaurant,double balance)
 	{
-		this.userName=userName;
+		super(userName, password, usertype);
+		/*this.userName=userName;
 		this.password=password;
-		this.usertype=usertype;
+		this.usertype=usertype;*/
 		this.restaurant=restaurant;
 		this.balance=balance;
 	}

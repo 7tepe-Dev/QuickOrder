@@ -1,3 +1,5 @@
+package FrontEnd;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -6,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
+
 public class GUI implements ActionListener {
 	
 	private static JLabel UserLabel;
@@ -66,6 +69,7 @@ public class GUI implements ActionListener {
 		RegisterButton.addActionListener(new GUI());
 		panel.add(RegisterButton);
 		frame.dispose();
+		/*
 		RegisterPage regPage = new RegisterPage();
 		regPage.setVisible(false);
 		
@@ -81,7 +85,7 @@ public class GUI implements ActionListener {
 		unspage.setVisible(false);
 		
 		frame.setVisible(true);
-		
+		*/
 	}
 
 	@Override
@@ -90,8 +94,8 @@ public class GUI implements ActionListener {
 		if(e.getSource()==LoginButton) {
 			frame.dispose();
 			String User = UserText.getText();
-			String Password = PasswordText.getText();
-			System.out.println(User + "  " + Password);
+			//String Password = PasswordText.getText();
+			//System.out.println(User + "  " + Password);
 			System.out.println("clicked");
 			boolean check=false;//=isLoginCorrect(User,Password);
 			if(check) {
@@ -100,8 +104,10 @@ public class GUI implements ActionListener {
 			else {
 				Unsuccessfull.setVisible(true);
 			}
+			/*
 			LoginPage logPage = new LoginPage();
 			logPage.setVisible(true);
+			*/
 		}
 		
 		

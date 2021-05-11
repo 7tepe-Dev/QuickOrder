@@ -1,3 +1,7 @@
+package BackEnd;
+
+import Database.DataHandler;
+
 public class Main 
 {
 	public static User currentUser=null;

@@ -1,9 +1,12 @@
+package BackEnd;
+
 import java.util.ArrayList;
 
-enum userType{ADMIN,OWNER,CUSTOMER};
+
 
 public abstract class User 
 {
+	public enum userType{ADMIN,OWNER,CUSTOMER};
 	private String userName;
 	private String password;
 	private userType usertype;

@@ -1,4 +1,7 @@
+package BackEnd;
+
 import java.util.Scanner;
+import BackEnd.User.userType;
 
 public class UserFactory 
 {

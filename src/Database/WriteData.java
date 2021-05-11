@@ -1,13 +1,11 @@
-package Database;
+package database;
 
-import BackEnd.*;
-import BackEnd.User.userType;
+import backend.*;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 
 public class WriteData 
 {
@@ -20,9 +18,9 @@ public class WriteData
 	
 	public static JSONArray userList = new JSONArray();
 	@SuppressWarnings("unchecked")
-	public void WriteTheUserToDB(User user)
+	public void writeTheUserToDB(User user)
 	{
-		if(user.getUsertype().equals(userType.ADMIN))
+		if(user.getUsertype().equals(UserType.ADMIN))
 		{
 			admin=new JSONObject();
 			Admin currentAdmin=((Admin)user);
@@ -31,7 +29,7 @@ public class WriteData
 			admin.put("usertype","Admin");
 			userList.add(admin);
 		}
-		else if(user.getUsertype().equals(userType.CUSTOMER))
+		else if(user.getUsertype().equals(UserType.CUSTOMER))
 		{
 			customer=new JSONObject();
 			Customer currentCustomer=((Customer)user);
@@ -42,7 +40,7 @@ public class WriteData
 			customer.put("location",currentCustomer.getLocation());
 			userList.add(customer);
 		}
-		else if(user.getUsertype().equals(userType.OWNER))
+		else if(user.getUsertype().equals(UserType.OWNER))
 		{
 			owner=new JSONObject();
 			Owner currentOwner=((Owner)user);
@@ -70,7 +68,7 @@ public class WriteData
 		{
 			System.out.println("An error ocurred at write data.");
 		}
-		try(FileWriter file = new FileWriter("RestaurantDatabase.json"))
+		try(FileWriter file = new FileWriter("Database.json"))
 		{
 			file.write(userList.toString());
 			file.flush();

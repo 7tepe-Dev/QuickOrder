@@ -1,8 +1,7 @@
-package Database;
+package database;
 
 
-import BackEnd.*;
-import BackEnd.User.userType;
+import backend.*;
 
 public class WriteDefaults 
 {
@@ -11,11 +10,11 @@ public class WriteDefaults
 		//admin
 		Admin admin=Admin.createOrGetAdmin();
 		//customers
-		Customer c=new Customer("AdamBlack","7741abab52.",userType.CUSTOMER,850,"New York");
-		Customer c1=new Customer("fatihYenilmez","1923fatih,",userType.CUSTOMER,200,"Ýstanbul");
-		Customer c2=new Customer("Jonathan43","_JJJ43",userType.CUSTOMER,1500,"London");
-		Customer c3=new Customer("HakkýTastepe","hakký1234",userType.CUSTOMER,50,"Ankara");
-		Customer c4=new Customer("Meryem_bilen","19/03/2019",userType.CUSTOMER,400,"Ýstanbul");
+		Customer c=new Customer("AdamBlack","7741abab52.",UserType.CUSTOMER,850,"New York");
+		Customer c1=new Customer("fatihYenilmez","1923fatih,",UserType.CUSTOMER,200,"Ýstanbul");
+		Customer c2=new Customer("Jonathan43","_JJJ43",UserType.CUSTOMER,1500,"London");
+		Customer c3=new Customer("HakkýTastepe","hakký1234",UserType.CUSTOMER,50,"Ankara");
+		Customer c4=new Customer("Meryem_bilen","19/03/2019",UserType.CUSTOMER,400,"Ýstanbul");
 		//aboutOwners
 		Product pmc=new Product("Double Quarter Pounder",30.99);
 		Product pmc1=new Product("Double McChicken",21.99);
@@ -29,7 +28,7 @@ public class WriteDefaults
 		mc.addNewProduct(pmc3);
 		mc.addNewProduct(pmc4);
 		mc.setRestaurantLocation("Washington");
-		Owner o1=new Owner("JohnForbesNash","annaJohn1978",userType.OWNER,mc,185250);
+		Owner o1=new Owner("JohnForbesNash","annaJohn1978",UserType.OWNER,mc,185250);
 		Product p1=new Product("Fýrýn Köfte",12);
 		Product p2=new Product("Lahana Sarmasý",15);
 		Product p3=new Product("Fanta (33 cl.)",5);
@@ -42,7 +41,7 @@ public class WriteDefaults
 		evy.addNewProduct(p4);
 		evy.addNewProduct(p5);
 		evy.setRestaurantLocation("Istanbul");
-		Owner o2=new Owner("BaranYýlmaz","baranYelda123",userType.OWNER,evy,45000);
+		Owner o2=new Owner("BaranYýlmaz","baranYelda123",UserType.OWNER,evy,45000);
 		Restaurant xd=new Restaurant("Tatlý Yiyelim");
 		xd.setRestaurantLocation("Ankara");
 		Product p10=new Product("Kakao Bisküvili Mag",11.70);
@@ -57,7 +56,7 @@ public class WriteDefaults
 		xd.addNewProduct(p13);
 		xd.addNewProduct(p14);
 		xd.addNewProduct(p15);
-		Owner o3=new Owner("_selinIsbilen.","sseelliinn__",userType.OWNER,xd,80533);
+		Owner o3=new Owner("_selinIsbilen.","sseelliinn__",UserType.OWNER,xd,80533);
 		User.addNewUserToList(admin);
 		User.addNewUserToList(c);
 		User.addNewUserToList(c1);
@@ -69,7 +68,7 @@ public class WriteDefaults
 		User.addNewUserToList(o3);
 		for(User user:User.getAllUsers())
 		{
-			DataHandler.WriteDataToJSON(user);
+			DataHandler.writeDataToJSON(user);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-package BackEnd;
+package backend;
 
 public class Customer extends User 
 {
@@ -6,29 +6,21 @@ public class Customer extends User
 	private double balance;
 	//Constructor for new added Customers
 	public Customer(String userName,String password,
-			userType usertype)
+			UserType usertype)
 	{
 		super(userName, password, usertype);
-		/*this.userName=userName;
-		this.password=password;
-		this.usertype=usertype;*/
 	}
 	//Constructor for default Customers
 	public Customer(String userName,String password,
-			userType usertype,double balance,String location)
+			UserType usertype,double balance,String location)
 	{
 		super(userName, password, usertype);
 		this.balance=balance;
 		this.location=location;
-		/*this.userName=userName;
-		this.password=password;
-		this.usertype=usertype;
-		this.balance=balance;
-		this.location=location;*/
 	}
 	//temporary constructor
 	public Customer(String userName,String password,
-			userType usertype,double balance)
+			UserType usertype,double balance)
 	{
 		super(userName, password, usertype);
 		this.balance=balance;

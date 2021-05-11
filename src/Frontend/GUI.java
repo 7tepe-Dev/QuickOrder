@@ -10,7 +10,8 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class GUI implements ActionListener {
-	
+
+	//gui		
 	private static JLabel UserLabel;
 	private static JTextField UserText;
 	private static JLabel PasswordLabel;

@@ -1,5 +1,3 @@
-package frontend;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -8,10 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
-
 public class GUI implements ActionListener {
-
-	//gui		
+	
 	private static JLabel UserLabel;
 	private static JTextField UserText;
 	private static JLabel PasswordLabel;
@@ -21,7 +17,7 @@ public class GUI implements ActionListener {
 	private static JLabel Succes;
 	private static JLabel Uns;
 	private static JLabel Unsuccessfull;
-	private static JFrame frame = new JFrame("My First GUI");
+	private static JFrame frame = new JFrame("YEMEK ZEPETÝ");
 	
 	public static void main(String args[]) {
 		
@@ -30,7 +26,7 @@ public class GUI implements ActionListener {
 		
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 160, 122));
+		panel.setBackground(new Color(153, 50, 204));
 		frame.setBackground(new Color(248, 248, 255));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(300,200);
@@ -59,18 +55,19 @@ public class GUI implements ActionListener {
 		panel.add(PasswordText);
 		
 		LoginButton = new JButton("Login");
-		LoginButton.setBackground(new Color(199, 21, 133));
+		LoginButton.setForeground(new Color(255, 255, 255));
+		LoginButton.setBackground(new Color(0, 0, 0));
 		LoginButton.setBounds(185,80,90,25);
 		LoginButton.addActionListener(new GUI());
 		panel.add(LoginButton);
 		
 		RegisterButton = new  JButton ("Register");
-		RegisterButton.setBackground(new Color(199, 21, 133));
+		RegisterButton.setForeground(new Color(255, 255, 255));
+		RegisterButton.setBackground(new Color(0, 0, 0));
 		RegisterButton.setBounds(185,110,90,25);
 		RegisterButton.addActionListener(new GUI());
 		panel.add(RegisterButton);
 		frame.dispose();
-		/*
 		RegisterPage regPage = new RegisterPage();
 		regPage.setVisible(false);
 		
@@ -82,11 +79,14 @@ public class GUI implements ActionListener {
 		Uns.setBounds(10,110,300,25);
 		panel.add(Uns);
 		
+		ownersFirstPage ownPage = new ownersFirstPage();
+		ownPage.setVisible(false);
+		
 		Unsuccessfull unspage = new Unsuccessfull();
 		unspage.setVisible(false);
 		
 		frame.setVisible(true);
-		*/
+		
 	}
 
 	@Override
@@ -95,20 +95,24 @@ public class GUI implements ActionListener {
 		if(e.getSource()==LoginButton) {
 			frame.dispose();
 			String User = UserText.getText();
-			//String Password = PasswordText.getText();
-			//System.out.println(User + "  " + Password);
+			String Password = PasswordText.getText();
+			System.out.println(User + "  " + Password);
 			System.out.println("clicked");
-			boolean check=false;//=isLoginCorrect(User,Password);
+			/*boolean check=false;//=isLoginCorrect(User,Password);
 			if(check) {
 				
 			}
 			else {
 				Unsuccessfull.setVisible(true);
 			}
-			/*
-			LoginPage logPage = new LoginPage();
+			*/LoginPage logPage = new LoginPage();
 			logPage.setVisible(true);
-			*/
+		}
+		
+		else if(e.getSource()==RegisterButton) {
+			frame.dispose();
+			RegisterPage regPage = new RegisterPage();
+			regPage.setVisible(true);
 		}
 		
 		

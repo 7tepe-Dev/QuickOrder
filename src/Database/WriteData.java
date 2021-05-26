@@ -106,7 +106,7 @@ public class WriteData
 	
 	public void writeToDB()
 	{
-		try(FileWriter file = new FileWriter("Database_test.json"))
+		try(FileWriter file = new FileWriter("Database.json"))
 		{
 			file.write(userList.toString());
 			file.flush();

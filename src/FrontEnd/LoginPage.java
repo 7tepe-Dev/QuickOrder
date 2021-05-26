@@ -23,6 +23,7 @@ public class LoginPage implements ActionListener {
 	private static JRadioButton userButton;
 	private static JPanel panel;
 	private static int a=1;
+	private static JPanel registerPanel;
 	public static void main(String args[]) {
 		
 		//LaunchPage launchPage = new LaunchPage ();
@@ -72,9 +73,39 @@ public class LoginPage implements ActionListener {
 		RegisterButton.setBounds(175,113,90,25);
 		RegisterButton.addActionListener(new LoginPage());
 		panel.add(RegisterButton);
+		
+		registerPanel = new JPanel();
+		registerPanel.setBounds(20, 86, 145, 74);
+		panel.add(registerPanel);
+		registerPanel.setLayout(null);
+		registerPanel.hide();
+		
+		JRadioButton userButton1 = new JRadioButton("User");
+		userButton1.setBounds(6, 7, 109, 23);
+		registerPanel.add(userButton1);
+		
+		JRadioButton ownerButton1 = new JRadioButton("Owner");
+		ownerButton1.setBounds(6, 44, 109, 23);
+		registerPanel.add(ownerButton1);
 		frame.dispose();
 		
-		
+		//USERBUTTON1 VE OWNERBUTTON1 AKSÝYONU//
+		//PANEL AÇTIM adý RegisterPanel. 77.satýr. registerButton 'a týklanýnca panel açýlýyor. normalde gizli duruyor.//
+				/*userButton1.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if(userButton1.isSelected()) {
+							ownerButton1.setSelected(false);
+						}
+					}
+				});
+				ownerButton1.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if(ownerButton1.isSelected()) {
+							userButton1.setSelected(false);
+						}
+					}
+				});
+				//*/
 		
 		MainPage mainpage = new MainPage();
 		mainpage.setVisible(false);
@@ -108,7 +139,8 @@ public class LoginPage implements ActionListener {
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Username or password is wrong!");
-				//KULLANICI ADI ÞÝFRE SIFIRLANACAK//
+				UserText.setText("");
+				PasswordText.setText("");
 				//!!!!BURADA DÝREKT WÝNDOWU KAPATIYOR BUNU ÇÖZMEMÝZ LAZIM!!!!//
 			}
 					
@@ -117,6 +149,9 @@ public class LoginPage implements ActionListener {
 		else if(e.getSource()==RegisterButton) {
 			if(a==1) {
 				LoginButton.setVisible(false);
+				//PANEL AÇILACAK// registerPanel.show();
+				
+				
 				ownerButton = new JRadioButton("Owner");
 				ownerButton.setBounds(54, 82, 86, 14);
 				ownerButton.addActionListener(new ActionListener() {
@@ -167,5 +202,4 @@ public class LoginPage implements ActionListener {
 		
 		
 	}
-
 }

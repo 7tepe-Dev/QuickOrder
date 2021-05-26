@@ -1,20 +1,21 @@
-package database;
+package Database;
 
-import backend.User;
 
 public class DataHandler 
 {
 	static ReadData reader;
 	static WriteData writer;
 	
-	public static void readDatasFromJSON()
+	public static void ReadDatasFromJSON()
 	{
 		reader=new ReadData();
 		reader.readAllUserfromDB();
 	}
-	public static void writeDataToJSON(User user)
+	
+	public static void writeDataToJSON()
 	{
 		writer=new WriteData();
-		writer.writeTheUserToDB(user);
+		writer.writeToDB();
 	}
+
 }

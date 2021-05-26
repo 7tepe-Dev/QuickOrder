@@ -1,7 +1,7 @@
-package database;
+package Database;
 
-import backend.*;
-
+import BackEnd.*;
+import BackEnd.User.userType;
 
 import java.io.File;
 import java.io.FileReader;
@@ -17,7 +17,7 @@ public class ReadData
 	 {
 		try 
 		{
-			File dataBaseFile=new File("Database.json");
+			File dataBaseFile=new File("RestaurantDatabase.json");
 			FileReader fileReader=new FileReader(dataBaseFile);
 			Object obj = parser.parse(fileReader);
 			JSONArray users = (JSONArray) obj;
@@ -35,13 +35,13 @@ public class ReadData
 					String password=(String) user.get("password");
 					double balance=(double) user.get("balance");
 					String location=(String) user.get("location");
-					User.addNewUserToList(new Customer(username,password,UserType.CUSTOMER,balance,location));
+					User.addNewUserToList(new Customer(username,password,userType.CUSTOMER,balance,location));
 				}
 				else if (((String)user.get("usertype")).equalsIgnoreCase("Owner")) 
 				{
 					String username=(String) user.get("username");
 					String password=(String) user.get("password");
-					Owner currentOwner=new Owner(username,password,UserType.OWNER);
+					Owner currentOwner=new Owner(username,password,userType.OWNER);
 					JSONObject restaurant = (JSONObject) user.get("restaurant");
 					if (!restaurant.isEmpty()) 
 					{

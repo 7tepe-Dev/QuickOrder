@@ -1,13 +1,13 @@
-package backend;
+package BackEnd;
 
-import database.DataHandler;
+import Database.DataHandler;
 
 public class Main 
 {
 	public static User currentUser=null;
 	public static void main(String[] args) 
 	{
-		DataHandler.readDatasFromJSON();
+		DataHandler.ReadDatasFromJSON();
 		//tabi alttaki satirdan once currentuser in bir yerde
 		//atamasinin yapilmasi gerek yani login islemi burada olmali
 		/*if(currentUser.getUsertype().equals(userType.ADMIN))

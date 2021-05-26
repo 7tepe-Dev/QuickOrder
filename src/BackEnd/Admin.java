@@ -1,11 +1,14 @@
-package backend;
+package BackEnd;
 
 public class Admin extends User
 {
-	private static Admin admin;
+	static Admin admin;
 	private Admin()
 	{
-		super("admin","admin1234",UserType.ADMIN);
+		super("admin","admin1234",userType.ADMIN);
+		/*this.userName="admin";
+		this.password="admin1234";
+		this.usertype=userType.ADMIN;*/
 	}
 	public static Admin createOrGetAdmin()
 	{

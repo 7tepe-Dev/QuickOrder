@@ -1,6 +1,7 @@
-package backend;
+package BackEnd;
 
 import java.util.Scanner;
+import BackEnd.User.userType;
 
 public class UserFactory 
 {
@@ -22,7 +23,7 @@ public class UserFactory
 			scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 			System.out.println("Enter the balance:");
 			double balance=scan.nextDouble();
-			newUser=new Customer(username,password,UserType.CUSTOMER);
+			newUser=new Customer(username,password,userType.CUSTOMER);
 		}
 		else if(usertype.equals("Owner"))
 		{
@@ -34,7 +35,7 @@ public class UserFactory
 			scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 			System.out.println("Enter the balance:");
 			double balance=scan.nextDouble();
-			newUser=new Owner(username,password,UserType.OWNER);
+			newUser=new Owner(username,password,userType.OWNER);
 		}
 		else
 		{

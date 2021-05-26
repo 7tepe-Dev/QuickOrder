@@ -1,4 +1,4 @@
-package backend;
+package BackEnd;
 
 public enum UserType 
 {

@@ -1,74 +1,112 @@
-package database;
+package Database;
 
-import backend.*;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Random;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import BackEnd.UserType;
+
+
 public class WriteData 
 {
-	JSONObject admin;
+
 	JSONObject customer;
+	
 	JSONObject owner;
 	JSONObject restaurant;
-	JSONArray allProducts;
-	JSONArray product;
-	
-	public static JSONArray userList = new JSONArray();
+
+	JSONArray products;
+	JSONObject product;
+
+
+	public JSONArray userList = new JSONArray();
+
+
 	@SuppressWarnings("unchecked")
-	public void writeTheUserToDB(User user)
+	public void writeCustomerData(String username, String password, double balance)
+	{		
+		customer = new JSONObject();
+
+		customer.put("username", username );
+		customer.put("password", password);
+		customer.put("balance", balance);
+		customer.put("userType", UserType.CUSTOMER.toString() );
+
+		userList.add(customer);
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public void writeOwnerData(String username, String password)
 	{
-		if(user.getUsertype().equals(UserType.ADMIN))
+		owner = new JSONObject();
+		restaurant = new JSONObject();
+
+		owner.put("username", username );
+		owner.put("password", password);
+		owner.put("restaurant", restaurant);
+
+		owner.put("userType", UserType.OWNER.toString());
+
+		userList.add(owner);
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public void writeRestaurantForOwner(String username, String restaurantName, double balance)
+	{
+
+		products = new JSONArray();
+
+		for (Object object : userList) 
 		{
-			admin=new JSONObject();
-			Admin currentAdmin=((Admin)user);
-			admin.put("username",currentAdmin.getUserName());
-			admin.put("password",currentAdmin.getPassword());
-			admin.put("usertype","Admin");
-			userList.add(admin);
-		}
-		else if(user.getUsertype().equals(UserType.CUSTOMER))
-		{
-			customer=new JSONObject();
-			Customer currentCustomer=((Customer)user);
-			customer.put("username",currentCustomer.getUserName());
-			customer.put("password",currentCustomer.getPassword());
-			customer.put("usertype","Customer");
-			customer.put("balance",currentCustomer.getBalance());
-			customer.put("location",currentCustomer.getLocation());
-			userList.add(customer);
-		}
-		else if(user.getUsertype().equals(UserType.OWNER))
-		{
-			owner=new JSONObject();
-			Owner currentOwner=((Owner)user);
-			owner.put("username",currentOwner.getUserName());
-			owner.put("password",currentOwner.getPassword());
-			owner.put("usertype","Owner");
-			owner.put("balance",currentOwner.getBalance());
-			restaurant=new JSONObject();
-			restaurant.put("restaurantname",currentOwner.getRestaurant().getRestaurantName());
-			restaurant.put("restaurantlocation",currentOwner.getRestaurant().getRestaurantLocation());
-			owner.put("restaurant",restaurant);
-			allProducts=new JSONArray();
-			restaurant.put("products",allProducts);
-			JSONObject currentObject=null;
-			for(Product p:currentOwner.getRestaurant().getAllProducts())
+
+			JSONObject owner = (JSONObject) object;
+
+			if (owner.get("username").toString().equals(username)) 
 			{
-				currentObject=new JSONObject();
-				currentObject.put("productname",p.getProductName());
-				currentObject.put("price",p.getProductPrice());
-				allProducts.add(currentObject);
-			}
-			userList.add(owner);
+				JSONObject restaurant = (JSONObject) owner.get("restaurant");
+
+				restaurant.put("name", restaurantName);
+				restaurant.put("products", products);
+				restaurant.put("balance", balance);
+
+			}			
 		}
-		else
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public void writeProductForRestaurant(String username, String productName, double price)
+	{
+
+		for (Object object : userList) 
 		{
-			System.out.println("An error ocurred at write data.");
+
+			JSONObject owner = (JSONObject) object;
+
+			if (owner.get("username").toString().equals(String.valueOf(username))) 
+			{
+				JSONObject restaurant = (JSONObject) owner.get("restaurant");	
+				JSONArray products = (JSONArray) restaurant.get("products");
+
+				product = new JSONObject();
+				product.put("productname", productName);
+				product.put("price", price);
+				products.add(product);
+
+			}			
 		}
-		try(FileWriter file = new FileWriter("Database.json"))
+
+	}
+	
+	public void writeToDB()
+	{
+		try(FileWriter file = new FileWriter("Database_test.json"))
 		{
 			file.write(userList.toString());
 			file.flush();
@@ -78,4 +116,7 @@ public class WriteData
 			e.printStackTrace();
 		}
 	}
+
+
+
 }

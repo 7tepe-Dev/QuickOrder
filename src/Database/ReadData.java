@@ -13,23 +13,25 @@ import org.json.simple.parser.JSONParser;
 public class ReadData 
 {
 	 JSONParser parser = new JSONParser();
-	 public void readAllUserfromDB()
+	 @SuppressWarnings("unlikely-arg-type")
+	public void readAllUserfromDB()
 	 {
 		try 
 		{
-			File dataBaseFile=new File("RestaurantDatabase.json");
+			File dataBaseFile=new File("DataBase_test.json");
 			FileReader fileReader=new FileReader(dataBaseFile);
 			Object obj = parser.parse(fileReader);
 			JSONArray users = (JSONArray) obj;
 			for (Object object : users) 
 			{
 				JSONObject user = (JSONObject) object;
+				System.out.println(user);
 				if(((String)user.get("usertype")).equalsIgnoreCase("Admin"))
 				{
 					Admin admin=Admin.createOrGetAdmin();
 					User.addNewUserToList(admin);
 				}
-				else if (((String)user.get("usertype")).equalsIgnoreCase("Customer")) 
+				else if (((String)user.get("usertype")).equals(UserType.CUSTOMER)) 
 				{
 					String username=(String) user.get("username");
 					String password=(String) user.get("password");
@@ -37,7 +39,7 @@ public class ReadData
 					String location=(String) user.get("location");
 					User.addNewUserToList(new Customer(username,password,userType.CUSTOMER,balance,location));
 				}
-				else if (((String)user.get("usertype")).equalsIgnoreCase("Owner")) 
+				else if (((String)user.get("usertype")).equals(UserType.OWNER)) 
 				{
 					String username=(String) user.get("username");
 					String password=(String) user.get("password");

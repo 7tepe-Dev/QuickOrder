@@ -34,7 +34,7 @@ public class WriteData
 		customer.put("username", username );
 		customer.put("password", password);
 		customer.put("balance", balance);
-		customer.put("userType", UserType.CUSTOMER.toString() );
+		customer.put("usertype", UserType.CUSTOMER.toString() );
 
 		userList.add(customer);
 
@@ -50,7 +50,7 @@ public class WriteData
 		owner.put("password", password);
 		owner.put("restaurant", restaurant);
 
-		owner.put("userType", UserType.OWNER.toString());
+		owner.put("usertype", UserType.OWNER.toString());
 
 		userList.add(owner);
 

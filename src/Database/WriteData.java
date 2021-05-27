@@ -3,6 +3,7 @@ package Database;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Random;
 
 import org.json.simple.JSONArray;
@@ -23,7 +24,7 @@ public class WriteData
 	JSONObject product;
 
 
-	public JSONArray userList = new JSONArray();
+	public static JSONArray userList = new JSONArray();
 
 
 	@SuppressWarnings("unchecked")

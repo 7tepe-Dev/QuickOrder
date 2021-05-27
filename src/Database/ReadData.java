@@ -16,8 +16,10 @@ public class ReadData
 	 @SuppressWarnings("unlikely-arg-type")
 	public void readAllUserfromDB()
 	 {
+
 		try 
 		{
+			
 			File dataBaseFile=new File("DataBase.json");
 			FileReader fileReader=new FileReader(dataBaseFile);
 			Object obj = parser.parse(fileReader);
@@ -76,6 +78,7 @@ public class ReadData
 					}
 				}
 			}
+
 		}
 		catch (Exception e) 
 		{

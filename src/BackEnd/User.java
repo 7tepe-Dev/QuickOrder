@@ -1,17 +1,15 @@
-package BackEnd;
+package backend;
 
 import java.util.ArrayList;
 
-
-
 public abstract class User 
 {
-	public enum userType{ADMIN,OWNER,CUSTOMER};
+	//public enum userType{ADMIN,OWNER,CUSTOMER};
 	private String userName;
 	private String password;
-	private userType usertype;
+	private UserType usertype;
 	private static ArrayList<User> allUsers=new ArrayList<User>();
-	protected User(String userName,String password,userType usertype)
+	protected User(String userName,String password,UserType usertype)
 	{
 		this.userName=userName;
 		this.password=password;
@@ -33,11 +31,11 @@ public abstract class User
 	{
 		this.password = password;
 	}
-	public userType getUsertype() 
+	public UserType getUsertype() 
 	{
-		return usertype;
+		return this.usertype;
 	}
-	public void setUsertype(userType usertype) 
+	public void setUsertype(UserType usertype) 
 	{
 		this.usertype = usertype;
 	}

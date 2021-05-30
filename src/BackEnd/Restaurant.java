@@ -1,4 +1,4 @@
-package BackEnd;
+package backend;
 
 import java.util.ArrayList;
 public class Restaurant 
@@ -24,12 +24,12 @@ public class Restaurant
 		allRestaurants.add(this);
 	}
 	//for default restaurants
-	public Restaurant(String restaurantName,ArrayList<Product> allProducts,String restaurantLocation)
+	public Restaurant(String restaurantName,ArrayList<Product> allProducts,String restaurantLocation,String imageLink)
 	{
 		this.restaurantName=restaurantName;
 		this.restaurantLocation=restaurantLocation;
 		this.allProducts=allProducts;
-		
+		this.imageLink=imageLink;
 	}
 	public String getRestaurantName() {
 		return restaurantName;

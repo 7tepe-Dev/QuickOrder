@@ -1,10 +1,11 @@
-package Database;
+package database;
 
-import BackEnd.*;
-import BackEnd.User.userType;
+import backend.*;
 
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,8 +14,10 @@ import org.json.simple.parser.JSONParser;
 public class ReadData 
 {
 	 JSONParser parser = new JSONParser();
+	 ArrayList<JSONObject>  AllUser = new ArrayList<JSONObject>();
+	 
 	 @SuppressWarnings("unlikely-arg-type")
-	public void readAllUserfromDB()
+	 public ArrayList<JSONObject> readAllUserfromDB()
 	 {
 
 		try 
@@ -23,29 +26,29 @@ public class ReadData
 			File dataBaseFile=new File("DataBase.json");
 			FileReader fileReader=new FileReader(dataBaseFile);
 			Object obj = parser.parse(fileReader);
-			JSONArray users = (JSONArray) obj;
-			for (Object object : users) 
+			@SuppressWarnings("unchecked")
+			ArrayList<JSONObject> users = (ArrayList<JSONObject>) obj;
+			for (JSONObject user : users) 
 			{
-				JSONObject user = (JSONObject) object;
-				System.out.println(user);
+
 				if(((String)user.get("usertype")).equalsIgnoreCase("Admin"))
 				{
 					Admin admin=Admin.createOrGetAdmin();
 					User.addNewUserToList(admin);
 				}
-				else if (((String)user.get("usertype")).equals(UserType.CUSTOMER)) 
+				else if (((String)user.get("usertype")).equals(UserType.CUSTOMER.toString())) 
 				{
 					String username=(String) user.get("username");
 					String password=(String) user.get("password");
 					double balance=(double) user.get("balance");
 					String location=(String) user.get("location");
-					User.addNewUserToList(new Customer(username,password,userType.CUSTOMER,balance,location));
+					User.addNewUserToList(new Customer(username,password,UserType.CUSTOMER, balance, location));
 				}
-				else if (((String)user.get("usertype")).equals(UserType.OWNER)) 
+				else if (((String)user.get("usertype")).equals(UserType.OWNER.toString())) 
 				{
 					String username=(String) user.get("username");
 					String password=(String) user.get("password");
-					Owner currentOwner=new Owner(username,password,userType.OWNER);
+					Owner currentOwner=new Owner(username,password,UserType.OWNER);
 					JSONObject restaurant = (JSONObject) user.get("restaurant");
 					if (!restaurant.isEmpty()) 
 					{
@@ -68,17 +71,22 @@ public class ReadData
 						}
 						else
 						{
+							
 							System.out.println("You don't have any products");
 						}
 						User.addNewUserToList(currentOwner);
 					}
 					else
 					{
+						currentOwner.setRestaurant(null);
 						System.out.println("You dont have any restaurant for now");
 					}
+					
 				}
+				AllUser.add(user);
 			}
-
+		
+			
 		}
 		catch (Exception e) 
 		{
@@ -86,5 +94,8 @@ public class ReadData
 			System.out.println("Returning to the defaults!!!");
 			WriteDefaults.WriteDefaultUsers();
 		}
+		
+		return AllUser;
 	}
+	 
 }

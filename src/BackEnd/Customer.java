@@ -31,7 +31,10 @@ public class Customer extends User
 	}
 	public void setLocation(String location) 
 	{
-		this.location = location;
+		if(location!=null)
+		{
+			this.location = location;
+		}
 	}
 	public double getBalance() 
 	{

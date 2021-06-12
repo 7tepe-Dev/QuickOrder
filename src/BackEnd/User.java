@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public abstract class User 
 {
-	//public enum userType{ADMIN,OWNER,CUSTOMER};
 	private String userName;
 	private String password;
 	private UserType usertype;

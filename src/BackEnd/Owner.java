@@ -3,7 +3,7 @@ package backend;
 public class Owner extends User 
 {
 	private Restaurant restaurant;
-	private double balance;
+	private double balance=0;
 	//Constructor for added new Owners
 	public Owner(String userName,String password,UserType usertype)
 	{

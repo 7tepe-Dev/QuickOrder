@@ -1,6 +1,8 @@
 package backend;
 
 import java.awt.Image;
+import java.io.File;
+
 
 import javax.swing.ImageIcon;
 
@@ -17,15 +19,19 @@ public class Product
 	{
 		this.productName = productName;
 		this.productPrice = productPrice;
-		this.productImage="C:\\Users\\Calky\\Desktop\\noImageAvailable.jpg";
+		this.productImage= getClass().getResource("/generalResources/noImageAvailable.jpg").toString();
+		
 	}
 	public Product(String productName, String productImage, double productPrice) 
 	{
 		this.productName = productName;
+		if(productImage==null || productImage.isEmpty())
+		{
+			productImage=getClass().getResource("/generalResources/noImageAvailable.jpg").toString();
+		}
 		this.productImage = productImage;
 		this.productPrice = productPrice;
 	}
-	
 	public String getProductName() 
 	{
 		return productName;
@@ -45,7 +51,7 @@ public class Product
 	{
 		return productImage;
 	}
-	public void setProductImage(String productImage) 
+	public void setProductImage(String productImage)
 	{
 		this.productImage = productImage;
 	}

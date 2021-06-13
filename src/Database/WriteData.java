@@ -29,7 +29,7 @@ public class WriteData
 
 
 	@SuppressWarnings("unchecked")
-	public void writeAdminData(String username, String password, double balance, String location)
+	public void writeAdminData(String username, String password)
 	{	
 
 		for (JSONObject user : DataHandler.database) 
@@ -41,16 +41,14 @@ public class WriteData
 			}
 		}
 	
-		customer = new JSONObject();
+		JSONObject admin = new JSONObject();
 				
-		customer.put("username", username );
-		customer.put("password", password);
-		customer.put("balance", balance);
-		customer.put("location", location);
-		customer.put("usertype", UserType.CUSTOMER.toString() );
+		admin.put("username", username );
+		admin.put("password", password);
+		admin.put("usertype", UserType.ADMIN.toString() );
 		
-		DataHandler.database.add(customer);
-		//userList(customer);
+		DataHandler.database.add(admin);
+
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -75,7 +73,7 @@ public class WriteData
 		customer.put("usertype", UserType.CUSTOMER.toString() );
 		
 		DataHandler.database.add(customer);
-		//userList(customer);
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -112,7 +110,7 @@ public class WriteData
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void writeRestaurantForOwner(String username, String restaurantName, String restaurantLocation)
+	public void writeRestaurantForOwner(String username, String restaurantName, String restaurantLocation, String restaurantImageURL)
 	{
 
 		products = new JSONArray();
@@ -126,9 +124,10 @@ public class WriteData
 			{
 				JSONObject restaurant = (JSONObject) owner.get("restaurant");
 
-				restaurant.put("name", restaurantName);
+				restaurant.put("restaurantname", restaurantName);
 				restaurant.put("products", products);
 				restaurant.put("restaurantLocation", restaurantLocation);
+				restaurant.put("restaurantImageURL", restaurantImageURL);
 
 			}			
 		}
@@ -136,7 +135,7 @@ public class WriteData
 	}
 
 	@SuppressWarnings("unchecked")
-	public void writeProductForRestaurant(String username, String productName, double price)
+	public void writeProductForRestaurant(String username, String productName, double price, String productImageURL)
 	{
 
 		for (Object object : DataHandler.database) 
@@ -152,6 +151,7 @@ public class WriteData
 				product = new JSONObject();
 				product.put("productname", productName);
 				product.put("price", price);
+				product.put("productImageURL", productImageURL);
 				products.add(product);
 
 			}			
@@ -175,12 +175,12 @@ public class WriteData
 				writeOwnerData(user.getUserName(), user.getPassword(), ((Owner)user).getBalance());
 				if (((Owner)user).getRestaurant() != null) 
 				{
-					writeRestaurantForOwner(user.getUserName(), ((Owner)user).getRestaurant().getRestaurantName(), ((Owner)user).getRestaurant().getRestaurantLocation());
+					writeRestaurantForOwner(user.getUserName(), ((Owner)user).getRestaurant().getRestaurantName(), ((Owner)user).getRestaurant().getRestaurantLocation(), ((Owner)user).getRestaurant().getImageLink());
 					if (((Owner)user).getRestaurant().getAllProducts() != null) 
 					{
 						for (int i = 0; i < ((Owner)user).getRestaurant().getAllProducts().size(); i++) 
 						{							
-							writeProductForRestaurant(user.getUserName(), ((Owner)user).getRestaurant().getAllProducts().get(i).getProductName(), ((Owner)user).getRestaurant().getAllProducts().get(i).getProductPrice());
+							writeProductForRestaurant(user.getUserName(), ((Owner)user).getRestaurant().getAllProducts().get(i).getProductName(), ((Owner)user).getRestaurant().getAllProducts().get(i).getProductPrice(), ((Owner)user).getRestaurant().getAllProducts().get(i).getProductImage());
 						}
 
 					}
@@ -207,7 +207,6 @@ public class WriteData
 		}
 		
 	}
-
 
 
 }

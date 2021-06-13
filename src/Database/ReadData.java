@@ -48,15 +48,19 @@ public class ReadData
 				{
 					String username=(String) user.get("username");
 					String password=(String) user.get("password");
+					double restaurantBalance= (double)user.get("balance");
 					Owner currentOwner=new Owner(username,password,UserType.OWNER);
 					JSONObject restaurant = (JSONObject) user.get("restaurant");
+					currentOwner.setBalance(restaurantBalance);
 					if (!restaurant.isEmpty()) 
 					{
+						String restaurantImageURL=(String)restaurant.get("restaurantImageURL");	
 						String restaurantName=(String) restaurant.get("restaurantname");
-						String restaurantLocation=(String)restaurant.get("restaurantlocation");
+						String restaurantLocation=(String)restaurant.get("restaurantLocation");						
 						Restaurant currentRestaurant=new Restaurant(restaurantName);
 						currentOwner.setRestaurant(currentRestaurant);
 						currentOwner.getRestaurant().setRestaurantLocation(restaurantLocation);
+						currentOwner.getRestaurant().setImageLink(restaurantImageURL);
 						JSONArray allProducts=(JSONArray) restaurant.get("products");
 						if(allProducts!=null)
 						{
@@ -65,7 +69,8 @@ public class ReadData
 								JSONObject currProduct=(JSONObject) allProducts.get(i);
 								String productName=(String) currProduct.get("productname");
 								double productPrice=(double) currProduct.get("price");
-								Product currentProduct=new Product(productName,productPrice);
+								String productImageURL=(String) currProduct.get("productImageURL");
+								Product currentProduct=new Product(productName,productImageURL,productPrice);
 								currentRestaurant.addNewProduct(currentProduct);
 							}
 						}

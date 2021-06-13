@@ -1,14 +1,29 @@
 package backend;
 
-
 import java.math.BigDecimal;
 import java.util.HashMap;
 
-
 public class Order 
 {
+	private static Order order;
+	private static HashMap<Product,Integer> allOrders;
+	public static Order getOrder()
+	{
+		if(order==null)
+		{
+			order=new Order();
+		}
+		return order;
+	}
+	public HashMap<Product,Integer> getAllOrders()
+	{
+		if(allOrders==null)
+		{
+			allOrders=new HashMap<Product,Integer>();
+		}
+		return allOrders;
+	}
 	
-	private static HashMap<Product,Integer> allOrders=new HashMap<Product,Integer>();
 	public void addNewOrder(Product product)
 	{
 		if(allOrders.containsKey(product))

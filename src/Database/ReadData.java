@@ -16,7 +16,6 @@ public class ReadData
 	 JSONParser parser = new JSONParser();
 	 ArrayList<JSONObject>  AllUser = new ArrayList<JSONObject>();
 	 
-	 @SuppressWarnings("unlikely-arg-type")
 	 public ArrayList<JSONObject> readAllUserfromDB()
 	 {
 

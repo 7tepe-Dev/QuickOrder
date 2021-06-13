@@ -1,49 +1,51 @@
 package backend;
-
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class UserFactory 
 {
-	static Scanner scan=new Scanner(System.in);
-	public static User createNewUser(String usertype)
+	public static boolean createNewUser(String username,String password,String usertype)
 	{
-		User newUser=null;
-		if(usertype.equals("Admin"))
+		boolean returnThis=false;
+		if(canICreate(username,password,usertype))
 		{
-			newUser=(Admin) Admin.createOrGetAdmin();
+			User newUser=null;
+			if(usertype.equals("Admin"))
+			{
+				newUser=(Admin) Admin.createOrGetAdmin();
+			}
+			else if(usertype.equals("Customer"))
+			{
+				newUser=new Customer(username,password,UserType.CUSTOMER);
+			}
+			else if(usertype.equals("Owner"))
+			{
+				newUser=new Owner(username,password,UserType.OWNER);
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "An error occured");
+			}
+			returnThis=true;
+			User.setCurentUser(newUser);
+			User.getAllUsers().add(newUser);
 		}
-		else if(usertype.equals("Customer"))
+		return returnThis;
+	}
+	private static boolean canICreate(String username,String password,String usertype)
+	{
+		if(username==null || password==null || usertype==null|| username.isEmpty() || password.isEmpty() || usertype.isEmpty())
 		{
-			System.out.println("Enter your username:");
-			String username=scan.next();
-			scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-			System.out.println("Enter your password:");
-			String password=scan.next();
-			scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-			System.out.println("Enter the balance:");
-			//double balance=scan.nextDouble();
-			newUser=new Customer(username,password,UserType.CUSTOMER);
+			JOptionPane.showMessageDialog(null, "You have to input everything that you see!");
+			return false;
 		}
-		else if(usertype.equals("Owner"))
+		for(User user:User.getAllUsers())
 		{
-			System.out.println("Enter your username:");
-			String username=scan.next();
-			scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-			System.out.println("Enter your password:");
-			String password=scan.next();
-			scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-			System.out.println("Enter the balance:");
-			//double balance=scan.nextDouble();
-			newUser=new Owner(username,password,UserType.OWNER);
+			if(user.getUserName().equals(username))
+			{
+				JOptionPane.showMessageDialog(null, "User already exist!");
+				return false;
+			}
 		}
-		else
-		{
-			System.out.println("User is couldn't created");
-		}
-		/*if(newUser!=null)
-		{
-			User.addNewUserToList(newUser);
-		}*/
-		return newUser;
+		return true;
 	}
 }

@@ -18,6 +18,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import backend.Restaurant;
+import backend.User;
 import backend.UserType;
 
 public class ProductsPage extends CommonThings implements ActionListener {
@@ -225,7 +226,7 @@ public class ProductsPage extends CommonThings implements ActionListener {
 		JSeparator s2;
 		JLabel productPriceLabel;
 		int buttonYPosition=0;
-		if(currentRestaurant.getAllProducts().size()==0 && !backend.Main.currentUser.getUsertype().equals(UserType.OWNER))
+		if(currentRestaurant.getAllProducts().size()==0 && !User.getCurentUser().getUsertype().equals(UserType.OWNER))
 		{
 			JLabel infoLabel=new JLabel("There are no products.");
 			infoLabel.setBounds(0, buttonYPosition,735,productButtonsHeight);
@@ -271,7 +272,7 @@ public class ProductsPage extends CommonThings implements ActionListener {
 			addToContainer(productButton, productPriceLabel);
 			buttonYPosition+=productButtonsHeight+diffBetweenButtons;
 		}
-		if(backend.Main.currentUser.getUsertype().equals(UserType.OWNER))
+		if(User.getCurentUser().getUsertype().equals(UserType.OWNER))
 		{
 			buttonYPosition+=diffBetweenAddAndPButtons;
 			createAddProductButtonForOwner(productsPanel,buttonYPosition);
@@ -295,7 +296,7 @@ public class ProductsPage extends CommonThings implements ActionListener {
 		panel.setPreferredSize(new Dimension(0,0));
 		dynamicChange=currentRestaurant.getAllProducts().size()*productButtonsHeight
 				+(currentRestaurant.getAllProducts().size()+1)*diffBetweenButtons;
-		if(backend.Main.currentUser.getUsertype().equals(UserType.OWNER))
+		if(User.getCurentUser().getUsertype().equals(UserType.OWNER))
 		{
 			dynamicChange+=this.addProductButtonHeight+(this.diffBetweenAddAndPButtons)*2;
 		}
@@ -303,7 +304,7 @@ public class ProductsPage extends CommonThings implements ActionListener {
 	}
 	private void initialize() throws MalformedURLException 
 	{
-		if(backend.Main.currentUser.getUsertype().equals(UserType.OWNER))
+		if(User.getCurentUser().getUsertype().equals(UserType.OWNER))
 		{
 			createForOwner();
 		}

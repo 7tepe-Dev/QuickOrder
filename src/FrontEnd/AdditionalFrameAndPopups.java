@@ -145,7 +145,7 @@ public class AdditionalFrameAndPopups extends CommonThings implements ActionList
 		locationText.setBounds(250, 180, 220, 50);
 		settingsPanel.add(locationText);
 		locationText.setColumns(10);
-		if(backend.Main.currentUser.getUsertype().equals(UserType.OWNER))
+		if(User.getCurentUser().getUsertype().equals(UserType.OWNER))
 		{
 			restaurantImageLabel = new JLabel("Restaurant Image:");
 			restaurantImageLabel.setHorizontalAlignment(SwingConstants.LEFT);
@@ -287,9 +287,9 @@ public class AdditionalFrameAndPopups extends CommonThings implements ActionList
 			try
 			{
 				Product product=new Product(productNameTextField.getText(),imageDirectory,Double.parseDouble(productPriceTextField.getText()));
-				for(int i=0;i<((backend.Owner)backend.Main.currentUser).getRestaurant().getAllProducts().size();i++)
+				for(int i=0;i<((backend.Owner)User.getCurentUser()).getRestaurant().getAllProducts().size();i++)
 				{
-					if(product.getProductName().equals(((backend.Owner)backend.Main.currentUser).getRestaurant().getAllProducts().get(i).getProductName()))
+					if(product.getProductName().equals(((backend.Owner)User.getCurentUser()).getRestaurant().getAllProducts().get(i).getProductName()))
 					{
 						throw new Exception();
 					}
@@ -312,7 +312,7 @@ public class AdditionalFrameAndPopups extends CommonThings implements ActionList
 	{
 		try
 		{
-			User user=backend.Main.currentUser;
+			User user=User.getCurentUser();
 			if(user.getUsertype().equals(UserType.CUSTOMER))
 			{
 				((Customer)user).setBalance(Double.parseDouble(balanceText.getText()));
@@ -340,17 +340,17 @@ public class AdditionalFrameAndPopups extends CommonThings implements ActionList
 	{
 		try
 		{	
-			((Owner) backend.Main.currentUser).setBalance(Double.parseDouble(this.restaurantBalanceTF.getText()));
+			((Owner) User.getCurentUser()).setBalance(Double.parseDouble(this.restaurantBalanceTF.getText()));
 			Restaurant restaurant=new Restaurant(this.restaurantNameTF.getText());
 			restaurant.setRestaurantLocation(this.restaurantLocationTF.getText());
 			restaurant.setImageLink(imageDirectory);
-			((Owner) backend.Main.currentUser).setRestaurant(restaurant);
+			((Owner) User.getCurentUser()).setRestaurant(restaurant);
 			JOptionPane.showMessageDialog(null, "Restaurant added successfully!");
 			resetForAddRestaurant();
 			ProductsPage.getProductsPage().setCurrentRestaurant(restaurant);
 			ProductsPage.getProductsPage().removeCreateRestaurantButton();
 			ProductsPage.getProductsPage().removeThings();
-			MainPage.getMainPage().updateUserInfo(String.valueOf(((Owner) backend.Main.currentUser).getBalance()),restaurant.getRestaurantLocation());
+			MainPage.getMainPage().updateUserInfo(String.valueOf(((Owner) backend.User.getCurentUser()).getBalance()),restaurant.getRestaurantLocation());
 			ProductsPage.getProductsPage().createForOwner();
 			frame.dispose();
 		}

@@ -8,11 +8,20 @@ public abstract class User
 	private String password;
 	private UserType usertype;
 	private static ArrayList<User> allUsers=new ArrayList<User>();
+	private static User currentUser;
 	protected User(String userName,String password,UserType usertype)
 	{
 		this.userName=userName;
 		this.password=password;
 		this.usertype=usertype;
+	}
+	public static User getCurentUser()
+	{
+		return currentUser;
+	}
+	public static void setCurentUser(User user)
+	{
+		currentUser=user;
 	}
 	public String getUserName() 
 	{

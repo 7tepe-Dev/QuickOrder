@@ -1,6 +1,5 @@
 package backend;
 
-
 import java.util.ArrayList;
 public class Restaurant
 {
@@ -64,5 +63,5 @@ public class Restaurant
 	public ArrayList<Product> getAllProducts()
 	{
 		return this.allProducts;
-	}
+	}	
 }

@@ -35,7 +35,6 @@ public abstract class CommonThings
 		URL imageURL=new URL(imageLink);
 		ImageIcon image=new ImageIcon(imageURL);
 		Image resizedImage=image.getImage().getScaledInstance(width,height,Image.SCALE_SMOOTH);
-		System.out.println(imageURL);
 		return new ImageIcon(resizedImage);
 	}
 }

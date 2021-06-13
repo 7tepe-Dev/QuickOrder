@@ -1,20 +1,13 @@
 package database;
 
-
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Random;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 import backend.Customer;
 import backend.Owner;
 import backend.User;
 import backend.UserType;
-
 
 public class WriteData 
 {
@@ -187,6 +180,10 @@ public class WriteData
 					
 				}
 
+			}
+			else if(user.getUsertype().equals(UserType.ADMIN))
+			{
+				writeAdminData(user.getUserName(),user.getPassword());
 			}
 			
 			writeToDB();

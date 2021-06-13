@@ -27,6 +27,7 @@ import backend.Owner;
 import backend.Restaurant;
 import backend.User;
 import backend.UserType;
+import database.WriteData;
 
 
 public class MainPage extends CommonThings implements ActionListener,WindowListener
@@ -69,12 +70,12 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					if(backend.Main.currentUser.getUsertype().equals(UserType.OWNER))
+					if(User.getCurentUser().getUsertype().equals(UserType.OWNER))
 					{
 						mainPage=new MainPage();
 						mainPage.createCommons();
 						mainPage.setStartPositionForProducts(mainPage.quickOrderPanelHeight+mainPage.userInfoPanelHeight+2);
-						ProductsPage.showProductsPage(mainPage.startYPositionForProducts,((Owner)backend.Main.currentUser).getRestaurant());
+						ProductsPage.showProductsPage(mainPage.startYPositionForProducts,((Owner)User.getCurentUser()).getRestaurant());
 						mainPageFrame.setVisible(true);
 					}
 					else
@@ -145,7 +146,7 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 	{
 		this.createFrame();
 		this.createQuickOrderPanel();
-		this.createUserInfoPanel(backend.Main.currentUser);
+		this.createUserInfoPanel(User.getCurentUser());
 	}
 	
 	public static MainPage getMainPage()
@@ -172,7 +173,7 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 		}
 		this.createFrame();
 		this.createQuickOrderPanel();
-		this.createUserInfoPanel(backend.Main.currentUser);
+		this.createUserInfoPanel(User.getCurentUser());
 		this.createContentsPanel();
 	}
 	public void createFrame()
@@ -365,7 +366,7 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 	private void createIntroForRestaurants(int x,int y,Container container)
 	{
 		JPanel restaurantsTextSidePanel=new JPanel();
-		if(backend.Main.currentUser.getUsertype().equals(UserType.ADMIN))
+		if(User.getCurentUser().getUsertype().equals(UserType.ADMIN))
 		{
 			restaurantsTextSidePanel.setBounds(x,y,735,restaurantsTextSidePanelHeight);
 			this.yPositionHolderForButtons+=restaurantsTextSidePanelHeight+diffBetweenButtons/*+2*/;
@@ -577,7 +578,7 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 		addToContainer(outsideScrollBar, scrollPane);
 		addToContainer(mainPageFrame.getContentPane(), outsideScrollBar);
 		resizeThePanel(contentsPanel);
-		if(backend.Main.currentUser.getUsertype().equals(UserType.ADMIN))
+		if(User.getCurentUser().getUsertype().equals(UserType.ADMIN))
 		{
 			createIntroForAdmin(0,mainPageFrame.getContentPane());
 			createIntroForUsers(0,contentsPanel);
@@ -585,7 +586,7 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 			createIntroForRestaurants(0,this.yPositionHolderForButtons,contentsPanel);
 			createAllRestaurants(contentsPanel);
 		}
-		else if(backend.Main.currentUser.getUsertype().equals(UserType.CUSTOMER))
+		else if(User.getCurentUser().getUsertype().equals(UserType.CUSTOMER))
 		{
 			createIntroForRestaurants(0,this.yPositionHolderForPanels,mainPageFrame.getContentPane());
 			createAllRestaurants(contentsPanel);
@@ -598,13 +599,13 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 	{
 		int dynamicChange=0;
 		panel.setPreferredSize(new Dimension(0,0));
-		if(backend.Main.currentUser.getUsertype().equals(UserType.ADMIN))
+		if(User.getCurentUser().getUsertype().equals(UserType.ADMIN))
 		{
 			dynamicChange=(User.getAllUsers().size()*usersButtonHeight)+(Restaurant.getAllRestaurants().size()*restaurantsButtonHeight)
 					+((User.getAllUsers().size()+Restaurant.getAllRestaurants().size()+2)*diffBetweenButtons)
 					+usersTextSidePanelHeight+restaurantsTextSidePanelHeight;
 		}
-		else if(backend.Main.currentUser.getUsertype().equals(UserType.CUSTOMER))
+		else if(User.getCurentUser().getUsertype().equals(UserType.CUSTOMER))
 		{
 			dynamicChange=(Restaurant.getAllRestaurants().size()*restaurantsButtonHeight)
 					+((Restaurant.getAllRestaurants().size())*diffBetweenButtons);
@@ -667,13 +668,12 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 	{
 		System.out.println("Window is about to close!");
 		System.out.println("Gidiyorum bak he");
+		WriteData wd=new WriteData();
+		wd.writeAllUsers();
 		mainPageFrame.dispose();
 	}
 	@Override
 	public void windowClosed(WindowEvent e) {
-		//System.out.println("Window is about to close!");
-		mainPageFrame.dispose();
-		
 	}
 	@Override
 	public void windowIconified(WindowEvent e) {

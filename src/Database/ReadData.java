@@ -73,33 +73,21 @@ public class ReadData
 								currentRestaurant.addNewProduct(currentProduct);
 							}
 						}
-						else
-						{
-							
-							System.out.println("You don't have any products");
-						}
 						User.addNewUserToList(currentOwner);
 					}
 					else
 					{
 						currentOwner.setRestaurant(null);
-						System.out.println("You dont have any restaurant for now");
 					}
-					
 				}
 				AllUser.add(user);
 			}
-		
-			
 		}
 		catch (Exception e) 
 		{
-			System.out.println("An error has occured at reading files.");
-			System.out.println("Returning to the defaults!!!");
-			WriteDefaults.WriteDefaultUsers();
+			WriteData writeData=new WriteData();
+			writeData.writeDefaultsData();
 		}
-		
 		return AllUser;
 	}
-	 
 }

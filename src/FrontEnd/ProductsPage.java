@@ -38,9 +38,9 @@ public class ProductsPage extends CommonThings implements ActionListener {
 	private int diffBetweenButtons=1;
 	private int diffBetweenAddAndPButtons=10;
 	JLabel restaurantImageLabel;
-	private Color productButtonColor=Color.decode("#4D4637");
+	private Color productButtonColor=Color.decode("#efe0e3");
 	private Color outsideScrollbarBackground=Color.decode("#ffd32a");
-	private Color productTextColor=Color.decode("#ffd32a");
+	private Color productTextColor=Color.decode("#ab0012");
 	public static void showProductsPage(int startYPosition,Restaurant restaurant) throws MalformedURLException
 	{
 		productsPage=new ProductsPage();
@@ -130,6 +130,7 @@ public class ProductsPage extends CommonThings implements ActionListener {
 	{
 		System.out.println("starty:"+startY);
 		JPanel productsIntroPanel=new JPanel();
+		productsIntroPanel.setBackground(Color.decode("#F2FEDC"));
 		productsIntroPanel.setBounds(0,startY,750,200);
 		productsIntroPanel.setLayout(null);
 		currentComponents.add(productsIntroPanel);
@@ -139,6 +140,7 @@ public class ProductsPage extends CommonThings implements ActionListener {
 		restaurantImageLabel.setIcon(this.resizeImage(currentRestaurant.getImageLink(),90,90));
 		addToContainer(productsIntroPanel, restaurantImageLabel);
 		JSeparator s1=new JSeparator();
+		s1.setForeground(Color.BLACK);
 		s1.setBounds(100,0,1,100);
 		s1.setOrientation(SwingConstants.VERTICAL);
 		addToContainer(productsIntroPanel, s1);
@@ -149,6 +151,7 @@ public class ProductsPage extends CommonThings implements ActionListener {
 		restaurantNameLabel.setBackground(Color.BLUE);
 		addToContainer(productsIntroPanel, restaurantNameLabel);
 		JSeparator s2=new JSeparator();
+		s2.setForeground(Color.BLACK);
 		s2.setBounds(0,100,750,1);
 		s2.setOrientation(SwingConstants.HORIZONTAL);
 		addToContainer(productsIntroPanel, s2);
@@ -158,6 +161,7 @@ public class ProductsPage extends CommonThings implements ActionListener {
 		allProductsLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 		addToContainer(productsIntroPanel, allProductsLabel);
 		JSeparator s3=new JSeparator();
+		s3.setForeground(Color.BLACK);
 		s3.setBounds(0,150,750,1);
 		s3.setOrientation(SwingConstants.HORIZONTAL);
 		addToContainer(productsIntroPanel, s3);
@@ -167,6 +171,8 @@ public class ProductsPage extends CommonThings implements ActionListener {
 		imageLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
 		addToContainer(productsIntroPanel, imageLabel);
 		JSeparator s4=new JSeparator();
+		s4.setForeground(Color.BLACK);
+
 		s4.setBounds(101,150,1,50);
 		s4.setOrientation(SwingConstants.VERTICAL);
 		addToContainer(productsIntroPanel, s4);
@@ -176,6 +182,7 @@ public class ProductsPage extends CommonThings implements ActionListener {
 		productNameLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
 		addToContainer(productsIntroPanel, productNameLabel);
 		JSeparator s5=new JSeparator();
+		s5.setForeground(Color.BLACK);
 		s5.setBounds(535,150,1,50);
 		s5.setOrientation(SwingConstants.VERTICAL);
 		addToContainer(productsIntroPanel, s5);
@@ -193,7 +200,8 @@ public class ProductsPage extends CommonThings implements ActionListener {
 		addRestaurantButton.setBounds(217, 100,300,addProductButtonHeight);
 		addRestaurantButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		addRestaurantButton.setHorizontalAlignment(SwingConstants.CENTER);
-		addRestaurantButton.setBackground(Color.decode("#BDC581"));
+		addRestaurantButton.setBackground(Color.decode("#ab0012"));
+		addRestaurantButton.setForeground(Color.decode("#feb036"));
 		addRestaurantButton.setLayout(null);
 		addRestaurantButton.addActionListener(this);
 		addToContainer(addToMe, addRestaurantButton);
@@ -251,6 +259,7 @@ public class ProductsPage extends CommonThings implements ActionListener {
 			productImageLabel.setIcon(this.resizeImage(currentRestaurant.getAllProducts().get(i).getProductImage(), 90, 90) );
 			addToContainer(productButton, productImageLabel);
 			s1=new JSeparator();
+			s1.setForeground(Color.BLACK);
 			s1.setBounds(100,0,1,100);
 			s1.setOrientation(SwingConstants.VERTICAL);
 			addToContainer(productButton, s1);
@@ -261,6 +270,7 @@ public class ProductsPage extends CommonThings implements ActionListener {
 			productNameLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 			addToContainer(productButton, productNameLabel);
 			s2 =new JSeparator();
+			s2.setForeground(Color.BLACK);
 			s2.setBounds(534,0,1,100);
 			s2.setOrientation(SwingConstants.VERTICAL);
 			addToContainer(productButton, s2);

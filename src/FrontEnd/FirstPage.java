@@ -53,36 +53,36 @@ public class FirstPage implements ActionListener {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+		frame.setResizable(false);
 		JLabel quickOrderLabel = new JLabel("QUICK ORDER");
-		quickOrderLabel.setForeground(Color.decode("#dff9fb"));
+		quickOrderLabel.setForeground(Color.decode("#ab0012"));
 		quickOrderLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 60));
 		quickOrderLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		quickOrderLabel.setBounds(0, 0, 500, 100);
 		frame.getContentPane().add(quickOrderLabel);
 		
 		JPanel topPanel = new JPanel();
-		topPanel.setBackground(Color.decode("#130f40"));
+		topPanel.setBackground(Color.decode("#feb036"));
 		topPanel.setBounds(0, 0, 500, 100);
 		frame.getContentPane().add(topPanel);
 		topPanel.setLayout(null);
 		
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.setBounds(0, 100, 500, 400);
-		bottomPanel.setBackground(Color.decode("#dff9fb"));
+		bottomPanel.setBackground(Color.decode("#ab0012"));
 		frame.getContentPane().add(bottomPanel);
 		bottomPanel.setLayout(null);
 		
 		JLabel usernameLabel = new JLabel("Username:");
 		usernameLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
-		usernameLabel.setForeground(Color.decode("#130f40"));
+		usernameLabel.setForeground(Color.decode("#feb036"));
 		usernameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		usernameLabel.setBounds(30, 70, 220, 50);
 		bottomPanel.add(usernameLabel);
 		
 		usernameTF = new JTextField();
 		usernameTF.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
-		usernameTF.setForeground(Color.decode("#130f40"));
+		usernameTF.setForeground(Color.decode("#ab0012"));
 
 		usernameTF.setBounds(250, 70, 220, 50);
 		bottomPanel.add(usernameTF);
@@ -92,25 +92,25 @@ public class FirstPage implements ActionListener {
 		passwordLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
 		passwordLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		passwordLabel.setBounds(30, 160, 220, 50);
-		passwordLabel.setForeground(Color.decode("#130f40"));
+		passwordLabel.setForeground(Color.decode("#feb036"));
 		bottomPanel.add(passwordLabel);
 		passwordTF = new JPasswordField();
-		passwordTF.setForeground(Color.decode("#130f40"));
+		passwordTF.setForeground(Color.decode("#ab0012"));
 		passwordTF.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
 		passwordTF.setBounds(250, 160, 220, 50);
 		passwordTF.setColumns(10);
 		bottomPanel.add(passwordTF);
 		loginButton = new JButton("Login");
-		loginButton.setBackground(Color.decode("#130f40"));
-		loginButton.setForeground(Color.decode("#dff9fb"));
+		loginButton.setBackground(Color.decode("#feb036"));
+		loginButton.setForeground(Color.decode("#ab0012"));
 		loginButton.setFocusable(false);
 		loginButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
 		loginButton.setBounds(255, 280, 220, 60);
 		loginButton.addActionListener(this);
 		bottomPanel.add(loginButton);
 		registerButton = new JButton("Register");
-		registerButton.setBackground(Color.decode("#130f40"));
-		registerButton.setForeground(Color.decode("#dff9fb"));
+		registerButton.setBackground(Color.decode("#feb036"));
+		registerButton.setForeground(Color.decode("#ab0012"));
 		registerButton.setFocusable(false);
 		registerButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
 		registerButton.setBounds(25, 280, 220, 60);
@@ -119,7 +119,9 @@ public class FirstPage implements ActionListener {
 		
 		ButtonGroup group=new ButtonGroup();
 		radioButtonForCustomer = new JRadioButton("Customer");
-		radioButtonForCustomer.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
+		radioButtonForCustomer.setBackground(Color.decode("#ab0012"));;
+		radioButtonForCustomer.setForeground(Color.decode("#feb036"));;
+		radioButtonForCustomer.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		radioButtonForCustomer.setFocusable(false);
 		radioButtonForCustomer.setBounds(250, 227, 171, 20);
 		radioButtonForCustomer.addActionListener(this);
@@ -128,7 +130,9 @@ public class FirstPage implements ActionListener {
 		bottomPanel.add(radioButtonForCustomer);
 		group.add(radioButtonForCustomer);
 		radioButtonForOwner = new JRadioButton("Owner");
-		radioButtonForOwner.setFont(new Font("Comic Sans MS", Font.PLAIN, 15));
+		radioButtonForOwner.setBackground(Color.decode("#ab0012"));;
+		radioButtonForOwner.setForeground(Color.decode("#feb036"));;
+		radioButtonForOwner.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		radioButtonForOwner.addActionListener(this);
 		radioButtonForOwner.setFocusable(false);
 		radioButtonForOwner.setVisible(false);

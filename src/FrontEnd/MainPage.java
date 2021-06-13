@@ -54,16 +54,15 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 	private final int restaurantsTextSidePanelHeight=100;
 	private final int usersButtonHeight=100;
 	private final int restaurantsButtonHeight=100;
-	private final Color quickOrderBackgroundColor=Color.decode("#00745D");
-	private final Color quickOrderTextColor=Color.decode("#ffd32a");
-	private final Color userInfoBackgroundColor=Color.decode("#E55531");
-	private final Color userInfoTextsColor=Color.decode("#3A001E");
+	private final Color quickOrderBackgroundColor=Color.decode("#feb036");
+	private final Color quickOrderTextColor=Color.decode("#ab0012");
+	private final Color userInfoBackgroundColor=Color.decode("#48912a");
+	private final Color userInfoTextsColor=Color.decode("#e1fbff");
 	private final Color introTextColor=Color.decode("#00000");
-	private final Color introSeparatorColor=Color.decode("#4D4637");
-	private final Color separatorColor=Color.decode("#B3AA99"); 
-	private final Color textColor=Color.decode("#ffd32a");
-	private final Color buttonColor=Color.decode("#4D4637");
-	private final Color backgroundColor=Color.decode("#ffd32a");
+	private final Color introSeparatorColor=Color.black;
+	private final Color separatorColor=Color.black; 
+	private final Color textColor=Color.decode("#ab0012");
+	private final Color buttonColor=Color.decode("#efe0e3");
 	
 	public static void showMainPage()
 	{
@@ -289,6 +288,7 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 	private void createIntroForAdmin(int x,Container container)
 	{
 		JPanel adminIntroPanel=new JPanel();
+		adminIntroPanel.setBackground(Color.decode("#F2FEDC"));
 		adminIntroPanel.setBounds(x,yPositionHolderForPanels,750,adminIntroPanelHeight);
 		adminIntroPanel.setLayout(null);
 		JLabel adminIntroText=new JLabel("All users and all restaurants are listed below");
@@ -303,6 +303,7 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 	private void createIntroForUsers(int x,Container container)
 	{
 		JPanel usersTextSidePanel=new JPanel();
+		usersTextSidePanel.setBackground(Color.decode("#F2FEDC"));
 		usersTextSidePanel.setBounds(x,0,750,usersTextSidePanelHeight);
 		usersTextSidePanel.setLayout(null);
 		JLabel allUsersLabel = new JLabel("All Users");
@@ -563,9 +564,9 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 		JPanel contentsPanel=new JPanel();
 		JPanel outsideScrollBar=new JPanel();
 		JScrollPane scrollPane = new JScrollPane();
-		
+		scrollPane.getVerticalScrollBar().setBackground(Color.decode("#F2FEDC"));
 		contentsPanel.setLayout(null);
-		contentsPanel.setBackground(this.backgroundColor);
+		contentsPanel.setBackground(Color.decode("#feb036"));
 		outsideScrollBar.setLayout(null);
 		currentPanels.add(outsideScrollBar);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -627,8 +628,6 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 	{
 		if(e.getSource()==settingsButton)
 		{
-			//System.out.println("Demek ayarlara gitmek istiyorsun.");
-			
 			AdditionalFrameAndPopups.getAdditionalThings().createSettingsFrame();
 		}
 		else if(e.getSource()==basketButton)
@@ -643,7 +642,6 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 			{
 				System.out.println(Restaurant.getAllRestaurants().get(index).getRestaurantName());
 				removeCurrentPanels();
-				//currentPanels.clear();
 				startYPositionForProducts=this.quickOrderPanelHeight+this.userInfoPanelHeight+2;
 				try {
 					ProductsPage.showProductsPage(startYPositionForProducts,Restaurant.getAllRestaurants().get(index));
@@ -666,8 +664,6 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 	@Override
 	public void windowClosing(WindowEvent e) 
 	{
-		System.out.println("Window is about to close!");
-		System.out.println("Gidiyorum bak he");
 		WriteData wd=new WriteData();
 		wd.writeAllUsers();
 		mainPageFrame.dispose();

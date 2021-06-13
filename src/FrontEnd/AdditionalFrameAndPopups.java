@@ -66,9 +66,11 @@ public class AdditionalFrameAndPopups extends CommonThings implements ActionList
 		frame.getContentPane().setLayout(null);
 		addProductsPanel = new JPanel();
 		addProductsPanel.setBounds(0, 0, 500, 500);
+		addProductsPanel.setBackground(Color.decode("#ab0012"));
 		frame.getContentPane().add(addProductsPanel);
 		addProductsPanel.setLayout(null);
 		JLabel productNameLabel = new JLabel("Product Name:");
+		productNameLabel.setForeground(Color.decode("#feb036"));
 		productNameLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
 		productNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		productNameLabel.setBounds(55, 90, 195, 50);
@@ -80,6 +82,7 @@ public class AdditionalFrameAndPopups extends CommonThings implements ActionList
 		addProductsPanel.add(productNameTextField);
 		productNameTextField.setColumns(10);
 		JLabel productPriceLabel = new JLabel("Product Price:");
+		productPriceLabel.setForeground(Color.decode("#feb036"));
 		productPriceLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
 		productPriceLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		productPriceLabel.setBounds(55, 180, 195, 50);
@@ -90,23 +93,26 @@ public class AdditionalFrameAndPopups extends CommonThings implements ActionList
 		addProductsPanel.add(productPriceTextField);
 		productPriceTextField.setColumns(10);
 		JLabel productImageLabelT = new JLabel("Product Image:");
+		productImageLabelT.setForeground(Color.decode("#feb036"));
 		productImageLabelT.setHorizontalAlignment(SwingConstants.LEFT);
 		productImageLabelT.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
 		productImageLabelT.setBounds(55, 270, 195, 50);
 		addProductsPanel.add(productImageLabelT);
 		imageChooserForProducts = new JButton("Choose");
+		imageChooserForProducts.setBackground(Color.decode("#feb036"));
+		imageChooserForProducts.setForeground(Color.decode("#ab0012"));
 		imageChooserForProducts.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		imageChooserForProducts.setBounds(357, 270, 113, 50);
 		imageChooserForProducts.addActionListener(this);
 		addProductsPanel.add(imageChooserForProducts);
 		addProductButton = new JButton("Add Product");
 		addProductButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
+		addProductButton.setBackground(Color.decode("#feb036"));
+		addProductButton.setForeground(Color.decode("#ab0012"));
 		addProductButton.setBounds(125, 400, 250, 60);
 		addProductButton.addActionListener(this);
 		addProductsPanel.add(addProductButton);
 		productImageLabel = new JLabel();
-		productImageLabel.setForeground(Color.RED);
-		productImageLabel.setBackground(Color.RED);
 		productImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		productImageLabel.setBounds(250, 255, 80, 80);
 		addProductsPanel.add(productImageLabel);
@@ -114,62 +120,72 @@ public class AdditionalFrameAndPopups extends CommonThings implements ActionList
 	}
 	public void createSettingsFrame()
 	{
-		frame = new JFrame();
-		frame.getContentPane().setLayout(null);
-		frame.setBounds(800,400, 516, 539);
-		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		settingsPanel = new JPanel();
-		settingsPanel.setBounds(0, 0, 500, 500);
-		frame.getContentPane().add(settingsPanel);
-		settingsPanel.setLayout(null);
-		JLabel balanceLabel = new JLabel("Balance:");
-		balanceLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
-		balanceLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		balanceLabel.setBounds(100, 90, 150, 50);
-		settingsPanel.add(balanceLabel);
-		balanceText = new JTextField();
-		balanceText.setHorizontalAlignment(SwingConstants.LEFT);
-		balanceText.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-		balanceText.setBounds(250, 90, 220, 50);
-		settingsPanel.add(balanceText);
-		balanceText.setColumns(10);
-		JLabel locationLabel = new JLabel("Location:");
-		locationLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
-		locationLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		locationLabel.setBounds(100, 180, 150, 50);
-		settingsPanel.add(locationLabel);
-		locationText = new JTextField();
-		locationText.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-		locationText.setBounds(250, 180, 220, 50);
-		settingsPanel.add(locationText);
-		locationText.setColumns(10);
-		if(User.getCurentUser().getUsertype().equals(UserType.OWNER))
+		if(((Owner)User.getCurentUser()).getRestaurant()!=null)
 		{
-			restaurantImageLabel = new JLabel("Restaurant Image:");
-			restaurantImageLabel.setHorizontalAlignment(SwingConstants.LEFT);
-			restaurantImageLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
-			restaurantImageLabel.setBounds(10, 270, 240, 60);
-			settingsPanel.add(restaurantImageLabel);
-			imageChooserForRestaurant = new JButton("Choose");
-			imageChooserForRestaurant.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-			imageChooserForRestaurant.setBounds(357, 277, 113, 50);
-			imageChooserForRestaurant.addActionListener(this);
-			settingsPanel.add(imageChooserForRestaurant);
-			restaurantImageLabel = new JLabel("");
-			restaurantImageLabel.setForeground(Color.RED);
-			restaurantImageLabel.setBackground(Color.RED);
-			restaurantImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-			restaurantImageLabel.setBounds(250, 265, 80, 80);
-			settingsPanel.add(restaurantImageLabel);
+			frame = new JFrame();
+			frame.getContentPane().setLayout(null);
+			frame.setBounds(800,400, 516, 539);
+			frame.setLocationRelativeTo(null);
+			frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			frame.getContentPane().setLayout(null);
+			settingsPanel = new JPanel();
+			settingsPanel.setBounds(0, 0, 500, 500);
+			settingsPanel.setBackground(Color.decode("#ab0012"));
+			frame.getContentPane().add(settingsPanel);
+			settingsPanel.setLayout(null);
+			JLabel balanceLabel = new JLabel("Balance:");
+			balanceLabel.setForeground(Color.decode("#feb036"));
+			balanceLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
+			balanceLabel.setHorizontalAlignment(SwingConstants.LEFT);
+			balanceLabel.setBounds(100, 90, 150, 50);
+			settingsPanel.add(balanceLabel);
+			balanceText = new JTextField();
+			balanceText.setHorizontalAlignment(SwingConstants.LEFT);
+			balanceText.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+			balanceText.setBounds(250, 90, 220, 50);
+			settingsPanel.add(balanceText);
+			balanceText.setColumns(10);
+			JLabel locationLabel = new JLabel("Location:");
+			locationLabel.setForeground(Color.decode("#feb036"));
+			locationLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
+			locationLabel.setHorizontalAlignment(SwingConstants.LEFT);
+			locationLabel.setBounds(100, 180, 150, 50);
+			settingsPanel.add(locationLabel);
+			locationText = new JTextField();
+			locationText.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+			locationText.setBounds(250, 180, 220, 50);
+			settingsPanel.add(locationText);
+			locationText.setColumns(10);
+			if(User.getCurentUser().getUsertype().equals(UserType.OWNER))
+			{
+				restaurantImageLabel = new JLabel("Restaurant Image:");
+				restaurantImageLabel.setForeground(Color.decode("#feb036"));
+				restaurantImageLabel.setHorizontalAlignment(SwingConstants.LEFT);
+				restaurantImageLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
+				restaurantImageLabel.setBounds(10, 270, 240, 60);
+				settingsPanel.add(restaurantImageLabel);
+				imageChooserForRestaurant = new JButton("Choose");
+				imageChooserForRestaurant.setBackground(Color.decode("#feb036"));
+				imageChooserForRestaurant.setForeground(Color.decode("#ab0012"));
+				imageChooserForRestaurant.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+				imageChooserForRestaurant.setBounds(357, 277, 113, 50);
+				imageChooserForRestaurant.addActionListener(this);
+				settingsPanel.add(imageChooserForRestaurant);
+				restaurantImageLabel = new JLabel("");
+				restaurantImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+				restaurantImageLabel.setBounds(250, 265, 80, 80);
+				settingsPanel.add(restaurantImageLabel);
+			}
+			updateSettingsButton = new JButton("Update");
+			updateSettingsButton.setBackground(Color.decode("#feb036"));
+			updateSettingsButton.setForeground(Color.decode("#ab0012"));
+			updateSettingsButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
+			updateSettingsButton.setBounds(125, 400, 250, 60);
+			updateSettingsButton.addActionListener(this);
+			settingsPanel.add(updateSettingsButton);
+			frame.setVisible(true);
 		}
-		updateSettingsButton = new JButton("Update");
-		updateSettingsButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
-		updateSettingsButton.setBounds(125, 400, 250, 60);
-		updateSettingsButton.addActionListener(this);
-		settingsPanel.add(updateSettingsButton);
-		frame.setVisible(true);
+		
 	}
 	public void createAddRestaurantFrame()
 	{
@@ -178,64 +194,64 @@ public class AdditionalFrameAndPopups extends CommonThings implements ActionList
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		addRestaurantPanel = new JPanel();
+		addRestaurantPanel.setBackground(Color.decode("#ab0012"));
 		addRestaurantPanel.setBounds(0, 0, 500, 500);
 		frame.getContentPane().add(addRestaurantPanel);
 		addRestaurantPanel.setLayout(null);
-		
 		addRestaurantButton = new JButton("Add Restaurant");
+		addRestaurantButton.setBackground(Color.decode("#feb036"));
+		addRestaurantButton.setForeground(Color.decode("#ab0012"));
 		addRestaurantButton.addActionListener(this);
 		addRestaurantButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
 		addRestaurantButton.setBounds(100, 400, 300, 80);
 		addRestaurantPanel.add(addRestaurantButton);
-		
 		JLabel restaurantNameLabel = new JLabel("Restaurant Name:");
+		restaurantNameLabel.setForeground(Color.decode("#feb036"));
 		restaurantNameLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
 		restaurantNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		restaurantNameLabel.setBounds(30, 30, 220, 60);
 		addRestaurantPanel.add(restaurantNameLabel);
-		
 		restaurantNameTF = new JTextField();
 		restaurantNameTF.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
 		restaurantNameTF.setBounds(250, 30, 220, 60);
 		addRestaurantPanel.add(restaurantNameTF);
 		restaurantNameTF.setColumns(10);
-		
 		restaurantBalanceTF = new JTextField();
 		restaurantBalanceTF.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
 		restaurantBalanceTF.setBounds(250, 120, 220, 60);
 		addRestaurantPanel.add(restaurantBalanceTF);
 		restaurantBalanceTF.setColumns(10);
-		
 		restaurantLocationTF = new JTextField(MainPage.getMainPage().getLocationLabel().getText().substring(11));
 		restaurantLocationTF.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
 		restaurantLocationTF.setBounds(250, 210, 220, 60);
 		addRestaurantPanel.add(restaurantLocationTF);
 		restaurantLocationTF.setColumns(10);
-		
 		restaurantImageLabel = new JLabel("");
+		restaurantImageLabel.setForeground(Color.decode("#feb036"));
 		restaurantImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		restaurantImageLabel.setBounds(260, 295, 80, 80);
 		addRestaurantPanel.add(restaurantImageLabel);
-		
 		chooseForRestaurant = new JButton("Choose");
+		chooseForRestaurant.setBackground(Color.decode("#feb036"));
+		chooseForRestaurant.setForeground(Color.decode("#ab0012"));
 		chooseForRestaurant.addActionListener(this);
 		chooseForRestaurant.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
 		chooseForRestaurant.setBounds(350, 310, 120, 50);
 		addRestaurantPanel.add(chooseForRestaurant);
-		
 		JLabel restaurantBalanceLabel = new JLabel("Restaurant Balance:");
+		restaurantBalanceLabel.setForeground(Color.decode("#feb036"));
 		restaurantBalanceLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		restaurantBalanceLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
 		restaurantBalanceLabel.setBounds(30, 120, 220, 60);
 		addRestaurantPanel.add(restaurantBalanceLabel);
-		
 		JLabel restaurantLocationLabel = new JLabel("Restaurant Location:");
+		restaurantLocationLabel.setForeground(Color.decode("#feb036"));
 		restaurantLocationLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
 		restaurantLocationLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		restaurantLocationLabel.setBounds(30, 210, 220, 60);
 		addRestaurantPanel.add(restaurantLocationLabel);
-		
 		JLabel restaurantImageLabel = new JLabel("Restaurant Image:");
+		restaurantImageLabel.setForeground(Color.decode("#feb036"));
 		restaurantImageLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		restaurantImageLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
 		restaurantImageLabel.setBounds(30, 300, 220, 60);
@@ -369,7 +385,8 @@ public class AdditionalFrameAndPopups extends CommonThings implements ActionList
 		try 
 		{
 			label.setIcon(resizeImage(imageDirectory, 80, 80));
-		} catch (MalformedURLException e1) 
+		} 
+		catch (MalformedURLException e1) 
 		{
 			e1.printStackTrace();
 		}

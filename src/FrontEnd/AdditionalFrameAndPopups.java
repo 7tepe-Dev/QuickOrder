@@ -120,7 +120,7 @@ public class AdditionalFrameAndPopups extends CommonThings implements ActionList
 	}
 	public void createSettingsFrame()
 	{
-		if(((Owner)User.getCurentUser()).getRestaurant()!=null)
+		if(!User.getCurentUser().getUsertype().equals(UserType.OWNER) || ((Owner)User.getCurentUser()).getRestaurant()!=null)
 		{
 			frame = new JFrame();
 			frame.getContentPane().setLayout(null);

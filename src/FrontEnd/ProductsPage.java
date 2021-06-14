@@ -128,7 +128,6 @@ public class ProductsPage extends CommonThings implements ActionListener {
 	}
 	private void createProductsIntro() throws MalformedURLException
 	{
-		System.out.println("starty:"+startY);
 		JPanel productsIntroPanel=new JPanel();
 		productsIntroPanel.setBackground(Color.decode("#F2FEDC"));
 		productsIntroPanel.setBounds(0,startY,750,200);

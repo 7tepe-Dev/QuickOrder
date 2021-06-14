@@ -111,7 +111,6 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 	}
 	private void updateBalance(String text)
 	{
-		System.out.println("text:"+text);
 		if(text.isEmpty() || text!=null)
 		{
 			balanceLabel.setText("Balance:"+text);
@@ -327,8 +326,7 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 		JSeparator s2=new JSeparator();
 		s2.setBounds(225,50,1,50);
 		s2.setOrientation(SwingConstants.VERTICAL);
-		//s2.setBackground(introSeparatorColor);
-		//s2.setForeground(introSeparatorColor);
+		s2.setForeground(introSeparatorColor);
 		addToContainer(usersTextSidePanel,s2);
 		JLabel userPasswordLabel=new JLabel("User Password");
 		userPasswordLabel.setBounds(226,50,225,50);
@@ -618,7 +616,6 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 	{
 		for(Component component:this.currentPanels)
 		{
-			//mainPageFrame.getContentPane().remove(component);
 			component.setVisible(false);
 		}
 		repaintANDrevalidate(mainPageFrame.getContentPane());
@@ -632,7 +629,7 @@ public class MainPage extends CommonThings implements ActionListener,WindowListe
 		}
 		else if(e.getSource()==basketButton)
 		{
-			System.out.println("Demek sepete gitmek istiyorsun.");
+			System.out.println("Sepete týklandý!");
 		}
 		else
 		{
